@@ -27,7 +27,7 @@ class BoitierController extends Controller
             'ventilateur' => 'required'
         ]);
 
-        $boitier = Boitier::create($request->all());
+        $boitier = Boitier::created($request->all());
 
         return response()->json($boitier, 200);
     }
