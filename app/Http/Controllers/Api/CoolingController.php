@@ -27,7 +27,7 @@ class CoolingController extends Controller
             'type' => 'required'
         ]);
 
-        $cooling = Cooling::created($request->all());
+        $cooling = Cooling::creating($request->all());
 
         return response()->json($cooling, 201);
     }

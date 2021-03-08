@@ -24,7 +24,7 @@ class CarteMereController extends Controller
             'image' => 'required'
         ]);
 
-        $carte_Mere = Carte_Mere::created($request->all());
+        $carte_Mere = Carte_Mere::creating($request->all());
 
         return response()->json($carte_Mere, 201);
     }
