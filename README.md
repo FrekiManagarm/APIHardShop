@@ -1,0 +1,2 @@
+# APIHardShop
+API of HardShop
