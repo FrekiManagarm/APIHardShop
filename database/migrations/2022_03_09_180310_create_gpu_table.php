@@ -13,9 +13,18 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('gpu', function (Blueprint $table) {
-            $table->id();
+        Schema::create('GPUs', function (Blueprint $table) {
+            $table->unsignedBigInteger('id')->autoIncrement();
+            $table->string('image')->nullable()->default(NULL);
+            $table->string('nom', 150);
+            $table->string('frequence');
+            $table->string('frequence_boost')->nullable()->default(NULL);
+            $table->integer('nb_coeur');
+            $table->integer('nb_ventilateurs')->nullable()->default(NULL);
+            $table->integer('nb_video_output');
+            $table->string('description', 600)->nullable()->default(NULL);
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

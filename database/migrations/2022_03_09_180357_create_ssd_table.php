@@ -13,9 +13,20 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('ssd', function (Blueprint $table) {
-            $table->id();
+        Schema::create('SSDs', function (Blueprint $table) {
+            $table->unsignedBigInteger('id')->autoIncrement();
+            $table->string('image')->nullable()->default(NULL);
+            $table->bigInteger('capacité');
+            $table->string('connectique');
+            $table->string('format');
+            $table->string('interface');
+            $table->bigInteger('lecture');
+            $table->bigInteger('ecriture');
+            $table->string('description', 600)->nullable()->default(NULL);
+            $table->string('marque');
+            $table->string('nom');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

@@ -13,9 +13,18 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('motherboard', function (Blueprint $table) {
-            $table->id();
+        Schema::create('MotherBoards', function (Blueprint $table) {
+            $table->unsignedBigInteger('id')->autoIncrement();
+            $table->string('image')->nullable()->default(NULL);
+            $table->string('constructeur');
+            $table->string('format');
+            $table->string('fréquence_mémoire');
+            $table->string('description', 600)->nullable()->default(NULL);
+            $table->string('nom', 150);
+            $table->string('proco_compatible');
+            $table->string('socket');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

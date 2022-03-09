@@ -13,9 +13,24 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('cpu', function (Blueprint $table) {
-            $table->id();
+        Schema::create('CPUs', function (Blueprint $table) {
+            $table->unsignedBigInteger('id')->autoIncrement();
+            $table->string('nom', 150);
+            $table->string('image');
+            $table->string('architecture');
+            $table->string('cache');
+            $table->string('chipset');
+            $table->string('chipset_graphique');
+            $table->string('frequence');
+            $table->string('frequence_boost');
+            $table->integer('nb_coeur');
+            $table->integer('nb_threads');
+            $table->string('description', 600)->nullable()->default(NULL);
+            $table->boolean('overclocking');
+            $table->string('socket');
+            $table->string('type');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

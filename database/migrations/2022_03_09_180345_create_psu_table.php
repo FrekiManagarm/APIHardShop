@@ -13,9 +13,18 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('psu', function (Blueprint $table) {
-            $table->id();
+        Schema::create('PSUs', function (Blueprint $table) {
+            $table->unsignedBigInteger('id')->autoIncrement();
+            $table->string('image')->nullable()->default(NULL);
+            $table->string('certif')->nullable()->default(NULL);
+            $table->string('format');
+            $table->string('description')->nullable()->default(NULL);
+            $table->string('marque');
+            $table->string('modulaire');
+            $table->string('nom');
+            $table->integer('puissance');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

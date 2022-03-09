@@ -13,8 +13,15 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('ram', function (Blueprint $table) {
-            $table->id();
+        Schema::create('RAMs', function (Blueprint $table) {
+            $table->unsignedBigInteger('id')->autoIncrement();
+            $table->string('image')->nullable()->default(NULL);
+            $table->string('capacité');
+            $table->string('interface');
+            $table->string('latence');
+            $table->string('description', 600)->nullable()->default(NULL);
+            $table->string('nom', 150);
+            $table->integer('quantité');
             $table->timestamps();
         });
     }

@@ -13,9 +13,19 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('cooling', function (Blueprint $table) {
-            $table->id();
+        Schema::create('Coolings', function (Blueprint $table) {
+            $table->unsignedBigInteger('id')->autoIncrement();
+            $table->string('bruit');
+            $table->string('format');
+            $table->string('marque');
+            $table->string('matériaux');
+            $table->string('description', 600)->nullable()->default(NULL);
+            $table->string('nom');
+            $table->string('socket');
+            $table->string('type');
+            $table->string('image')->nullable()->default(NULL);
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

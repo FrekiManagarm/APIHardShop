@@ -14,7 +14,17 @@ return new class extends Migration
     public function up()
     {
         Schema::create('config', function (Blueprint $table) {
-            $table->id();
+            $table->unsignedBigInteger('id')->autoIncrement();
+            $table->unsignedBigInteger('user_id');
+            $table->unsignedBigInteger('cpu_id');
+            $table->unsignedBigInteger('ram_id');
+            $table->unsignedBigInteger('motherboard_id');
+            $table->unsignedBigInteger('psu_id');
+            $table->unsignedBigInteger('gpu_id');
+            $table->unsignedBigInteger("hdd_id");
+            $table->unsignedBigInteger('ssd_id');
+            $table->unsignedBigInteger('cooling_id');
+            $table->unsignedBigInteger('case_id');
             $table->timestamps();
         });
     }

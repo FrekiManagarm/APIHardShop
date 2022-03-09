@@ -13,9 +13,20 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('hdd', function (Blueprint $table) {
-            $table->id();
+        Schema::create('HDDs', function (Blueprint $table) {
+            $table->unsignedBigInteger('id')->autoIncrement();
+            $table->string('image')->nullable()->default(NULL);
+            $table->integer('RPM');
+            $table->integer('capacité');
+            $table->string('format');
+            $table->string('interface');
+            $table->string('description', 600)->nullable()->default(NULL);
+            $table->string('marque');
+            $table->integer('mémoire_cache');
+            $table->string('nom');
+            $table->string('transfert');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 
