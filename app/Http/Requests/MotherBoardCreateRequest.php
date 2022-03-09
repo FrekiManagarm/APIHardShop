@@ -13,7 +13,7 @@ class MotherBoardCreateRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +24,14 @@ class MotherBoardCreateRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'image' => 'required|string|max:150',
+            'constructeur' => 'required|string|max:150',
+            'format' => 'required|string|max:150',
+            'fréquence_mémoire' => 'required|string|max:150',
+            'description' => 'sometimes|string|max:150',
+            'nom' => 'required|string|max:150',
+            'proco_compatible' => 'required|string|max:250',
+            'socket' => 'required|string|max:150'
         ];
     }
 }

@@ -13,7 +13,7 @@ class BoitierCreateRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +24,15 @@ class BoitierCreateRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'image' => 'required|string|max:191',
+            'RGB' => 'required|boolean',
+            'alim_inclus' => 'required|boolean',
+            'couleur' => 'required|string|max:50',
+            'description' => 'sometimes|string|max:600',
+            'facade_laterale' => 'required|string|max:200',
+            'format' => 'required|string|max:50',
+            'nom' => 'required|string|max:150',
+            'ventilateur' => 'required|boolean',
         ];
     }
 }

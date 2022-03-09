@@ -13,7 +13,7 @@ class RAMCreateRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +24,13 @@ class RAMCreateRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'image' => 'required|string|max:150',
+            'capacité' => 'required|string|max:150',
+            'interface' => 'required|string|max:150',
+            'description' => 'sometimes|string|max:150',
+            'latence' => 'required|string|max:150',
+            'nom' => 'required|string|max:150',
+            'quantité' => 'required|integer|digits:11',
         ];
     }
 }

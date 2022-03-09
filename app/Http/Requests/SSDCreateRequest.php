@@ -13,7 +13,7 @@ class SSDCreateRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +24,16 @@ class SSDCreateRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'image' => 'required|string|max:150',
+            'capacité' => 'required|integer|digits:20',
+            'connectique' => 'required|string|max:150',
+            'format' => 'required|string|max:150',
+            'interface' => 'required|string|max:150',
+            'lecture' => 'required|integer|digits:20',
+            'ecriture' => 'required|integer|digits:20',
+            'description' => 'sometimes|string|max:600',
+            'marque' => 'required|string|max:150',
+            'nom' => 'required|string|max:150'
         ];
     }
 }

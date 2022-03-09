@@ -13,7 +13,7 @@ class CoolingCreateRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +24,15 @@ class CoolingCreateRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'bruit' => 'required|string|max:150',
+            'format' => 'required|string|max:150',
+            'marque' => 'required|string|max:150',
+            'matériaux' => 'required|string|max:150',
+            'description' => 'sometimes|string|max:600',
+            'nom' => 'required|string|max:150',
+            'socket' => 'required|string|max:150',
+            'type' => 'required|string|max:150',
+            'image' => 'required|string|max:150'
         ];
     }
 }

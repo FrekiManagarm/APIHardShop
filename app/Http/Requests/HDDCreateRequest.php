@@ -13,7 +13,7 @@ class HDDCreateRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +24,16 @@ class HDDCreateRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'image' => 'required|string|max:150',
+            'RPM' => 'required|integer|digits:11',
+            'capacité' => 'required|integer|digits:11',
+            'format' => 'required|string|max:150',
+            'interface' => 'required|string|max:150',
+            'description' => 'sometimes|string|max:600',
+            'marque' => 'required|string|max:150',
+            'mémoire_cache' => 'required|integer|digits:11',
+            'nom' => 'required|string|max:150',
+            'transfert' => 'required|string|max:150'
         ];
     }
 }
