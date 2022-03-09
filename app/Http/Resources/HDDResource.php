@@ -14,6 +14,18 @@ class HDDResource extends JsonResource
      */
     public function toArray($request)
     {
-        return parent::toArray($request);
+        return [
+            'id' => $this->id,
+            'image' => $this->image,
+            'RPM' => $this->RPM,
+            'capacité' => $this->capacité,
+            'format' => $this->format,
+            'interface' => $this->interface,
+            'description' => $this->description,
+            'marque' => $this->marque,
+            'mémoire_cache' => $this->mémoire_cache,
+            'nom' => $this->nom,
+            'transfert' => $this->transfert
+        ];
     }
 }

@@ -14,6 +14,17 @@ class CoolingResource extends JsonResource
      */
     public function toArray($request)
     {
-        return parent::toArray($request);
+        return [
+            'id' => $this->id,
+            'bruit' => $this->bruit,
+            'format' => $this->format,
+            'marque' => $this->marque,
+            'matériaux' => $this->matériaux,
+            'description' => $this->description,
+            'nom' => $this->nom,
+            'socket' => $this->socket,
+            'type' => $this->type,
+            'image' => $this->image
+        ];
     }
 }

@@ -14,6 +14,18 @@ class SSDResource extends JsonResource
      */
     public function toArray($request)
     {
-        return parent::toArray($request);
+        return [
+            'id' => $this->id,
+            'image' => $this->image,
+            'capacité' => $this->capacité,
+            'connectique' => $this->connectique,
+            'format' => $this->format,
+            'interface' => $this->interface,
+            'lecture' => $this->lecture,
+            'ecriture' => $this->ecriture,
+            'description' => $this->description,
+            'marque' => $this->marque,
+            'nom' => $this->nom,
+        ];
     }
 }

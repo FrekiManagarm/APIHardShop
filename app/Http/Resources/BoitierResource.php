@@ -14,6 +14,17 @@ class BoitierResource extends JsonResource
      */
     public function toArray($request)
     {
-        return parent::toArray($request);
+        return [
+            'id' => $this->id,
+            'image' => $this->image,
+            'RGB' => $this->RGB,
+            'alim_inclus' => $this->alim_inclus,
+            'couleur' => $this->couleur,
+            'description' => $this->description,
+            'facade_laterale' => $this->facade_laterale,
+            'format' => $this->format,
+            'nom' => $this->nom,
+            'ventilateur' => $this->ventilateur,
+        ];
     }
 }

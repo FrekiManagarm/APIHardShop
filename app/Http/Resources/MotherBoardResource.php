@@ -14,6 +14,16 @@ class MotherBoardResource extends JsonResource
      */
     public function toArray($request)
     {
-        return parent::toArray($request);
+        return [
+            'id' => $this->id,
+            'image' => $this->image,
+            'constructeur' => $this->constructeur,
+            'format' => $this->format,
+            'fréquence_mémoire' => $this->fréquence_mémoire,
+            'description' => $this->description,
+            'nom' => $this->nom,
+            'proco_compatible' => $this->proco_compatible,
+            'socket' => $this->socket
+        ];
     }
 }
