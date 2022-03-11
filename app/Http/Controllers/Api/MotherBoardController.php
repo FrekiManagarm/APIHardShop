@@ -21,6 +21,18 @@ class MotherBoardController extends Controller
         return (new MotherBoardResource($mb))->response()->setStatusCode(200);
     }
 
+    public function procoCompatible($proco_compatible) {
+        $mb = MotherBoard::where('MotherBoards.proco_compatible', $proco_compatible)->get();
+
+        return MotherBoardResource::collection($mb)->response()->setStatusCode(200);
+    }
+
+    public function byConstructor($constructor) {
+        $mb = MotherBoard::where('MotherBoards.constructeur', $constructor)->get();
+
+        return MotherBoardResource::collection($mb)->response()->setStatusCode(200);
+    }
+
     public function store(MotherBoardCreateRequest $request) {
         $mb = MotherBoard::create($request->validated());
 

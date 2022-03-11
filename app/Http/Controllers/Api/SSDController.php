@@ -21,6 +21,18 @@ class SSDController extends Controller
         return (new SSDResource($ssd))->response()->setStatusCode(200);
     }
 
+    public function byMarque($marque) {
+        $ssd = SSD::where('SSDs.marque', $marque)->get();
+
+        return SSDResource::collection($ssd)->response()->setStatusCode(200);
+    }
+
+    public function byCapacity($capacity) {
+        $ssd = SSD::where('SSDs.capacité', $capacity)->get();
+
+        return SSDResource::collection($ssd)->response()->setStatusCode(200);
+    }
+
     public function store(SSDCreateRequest $request) {
         $ssd = SSD::create($request->validated());
 

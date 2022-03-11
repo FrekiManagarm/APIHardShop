@@ -114,4 +114,19 @@ Route::middleware('auth:api')->group(function () {
     Route::patch('/Boitier/{id}', [BoitierController::class, 'update']);
     Route::delete('/Boitier/{id}', [BoitierController::class, 'delete']);
 
+    // Configurator
+    Route::get('/HDD/{capacity}', [HDDController::class, 'byCapacity']);
+    Route::get('/SSD/{marque}', [SSDController::class, 'byMarque']);
+    Route::get('/SSD/{capacity}', [SSDController::class, 'byCapacity']);
+    Route::get('/RAM/{interface}', [RAMController::class, 'interface']);
+    Route::get('/RAM/{capacity}', [RAMController::class, 'capacity']);
+    Route::get('/PSU/{power}', [PSUController::class, 'byPower']);
+    Route::get('/PSU/{format}', [PSUController::class, 'byFormat']);
+    Route::get('/MotherBoard/{proco_compatible}', [MotherBoardController::class, 'procoCompatible']);
+    Route::get('/MotherBoard/{constructor}', [MotherBoardController::class, 'byConstructor']);
+    Route::get('/CPU/{proco}', [CPUController::class, 'byType']);
+    Route::get('/Cooling/{format}', [CoolingController::class, 'byFormat']);
+    Route::get('/Cooling/{socket}', [CoolingController::class, 'bySocket']);
+    Route::get('/Cooling/{type}', [CoolingController::class, 'byType']);
+
 });

@@ -21,6 +21,12 @@ class HDDController extends Controller
         return (new HDDResource($hdd))->response()->setStatusCode(200);
     }
 
+    public function capacity($capacity) {
+        $hdd = HDD::where('HDDs.capacité', $capacity)->get();
+
+        return HDDResource::collection($hdd)->response()->setStatusCode(200);
+    }
+
     public function store(HDDCreateRequest $request) {
         $hdd = HDD::create($request->validated());
 

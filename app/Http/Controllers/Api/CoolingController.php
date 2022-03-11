@@ -21,6 +21,24 @@ class CoolingController extends Controller
         return (new CoolingResource($cooling))->response()->setStatusCode(200);
     }
 
+    public function byFormat($format) {
+        $cooling = Cooling::where('Coolings.format', $format)->get();
+
+        return CoolingResource::collection($cooling)->response()->setStatusCode(200);
+    }
+
+    public function bySocket($socket) {
+        $cooling = Cooling::where('Coolings.socket', $socket)->get();
+
+        return CoolingResource::collection($cooling)->response()->setStatusCode(200);
+    }
+
+    public function byType($type) {
+        $cool = Cooling::where('Coolings.type', $type)->get();
+
+        return CoolingResource::collection($cool)->response()->setStatusCode(200);
+    }
+
     public function store(CoolingCreateRequest $request) {
         $cooling = Cooling::create($request->validated());
 

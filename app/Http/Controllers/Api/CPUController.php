@@ -15,6 +15,12 @@ class CPUController extends Controller
         return CPUResource::collection(CPU::all())->response()->setStatusCode(200);
     }
 
+    public function byType($proco) {
+        $cpu = CPU::where('CPUs.type', $proco)->get();
+
+        return CPUResource::collection($cpu)->response()->setStatusCode(200);
+    }
+
     public function show($id) {
         $cpu = CPU::where('CPUs.id', $id)->get();
 

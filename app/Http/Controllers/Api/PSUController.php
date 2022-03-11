@@ -21,6 +21,18 @@ class PSUController extends Controller
         return (new PSUResource($psu))->response()->setStatusCode(200);
     }
 
+    public function byPower($power) {
+        $psu = PSU::where('PSUs.puissance', $power)->get();
+
+        return PSUResource::collection($psu)->response()->setStatusCode(200);
+    }
+
+    public function byFormat($format) {
+        $psu = PSU::where('PSUs.format', $format)->get();
+
+        return PSUResource::collection($psu)->response()->setStatusCode(200);
+    }
+
     public function store(PSUCreateRequest $request) {
         $psu = PSU::create($request->validated());
 
