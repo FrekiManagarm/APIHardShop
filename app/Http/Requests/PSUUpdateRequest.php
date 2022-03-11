@@ -24,7 +24,7 @@ class PSUUpdateRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            
         ];
     }
 }

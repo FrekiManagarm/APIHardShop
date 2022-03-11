@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('firstname', 150)->nullable()->default(NULL);
             $table->string('lastname', 150)->nullable()->default(NULL);
             $table->string('email')->unique();
-            $table->boolean('is_Admin');
+            $table->boolean('is_Admin')->default(0);
             $table->string('avatar_url')->nullable()->default(NULL);
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');

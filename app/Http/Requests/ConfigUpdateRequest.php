@@ -24,7 +24,16 @@ class ConfigUpdateRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'user_id' => 'sometimes|integer',
+            'cpu_id' => 'sometimes|integer',
+            'ram_id' => 'sometimes|integer',
+            'motherboard_id' => 'sometimes|integer',
+            'psu_id' => 'sometimes|integer',
+            'gpu_id' => 'sometimes|integer',
+            'hdd_id' => 'sometimes|integer',
+            'ssd_id' => 'sometimes|integer',
+            'cooling_id' => 'sometimes|integer',
+            'case_id' => 'sometimes|integer' 
         ];
     }
 }

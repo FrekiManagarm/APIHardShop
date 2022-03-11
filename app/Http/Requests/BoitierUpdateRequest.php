@@ -24,7 +24,15 @@ class BoitierUpdateRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'image' => 'sometimes|string|max:191',
+            'RGB' => 'sometimes|boolean',
+            'alim_inclus' => 'sometimes|boolean',
+            'couleur' => 'sometimes|string|max:50',
+            'description' => 'sometimes|string|max:600',
+            'facade_laterale' => 'sometimes|string|max:200',
+            'format' => 'sometimes|string|max:50',
+            'nom' => 'sometimes|string|max:150',
+            'ventilateur' => 'sometimes|boolean',
         ];
     }
 }

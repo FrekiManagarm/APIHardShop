@@ -7,6 +7,7 @@ use App\Http\Requests\UserCreateRequest;
 use App\Http\Resources\UserResource;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class AuthController extends Controller
 {
@@ -26,18 +27,16 @@ class AuthController extends Controller
     }
 
     public function login(Request $request) {
-        $data = [
-            'email' => $request->email,
-            'password' => $request->password
-        ];
 
-        if (auth()->attempt($data)) {
-            $token = auth()->user()->createToken('Laravel-9-Passport-Auth')->accessToken;
-            return response()->json([
-                'user' => new UserResource(auth()->user()),
-                'token' => $token,
-                'message' => 'login successfully',
-            ]);
+        if (Auth::guard('web')->attempt(['email' => request('email'), 'password' => request('password')])) {
+
+            $userAuth = Auth::guard('web')->user();
+
+            $token = $userAuth->createToken('Laravel-9-Passport-Auth')->accessToken;
+
+            $response = ['token' => $token, 'user' => new UserResource($userAuth)];
+
+            return response($response, 200);
         } else {
             $response = ['message' => 'Wrong email or password'];
             return response()->json($response, 422);

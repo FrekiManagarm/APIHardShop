@@ -24,7 +24,16 @@ class SSDUpdateRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'image' => 'sometimes|string|max:150',
+            'capacité' => 'sometimes|integer|digits:20',
+            'connectique' => 'sometimes|string|max:150',
+            'format' => 'sometimes|string|max:150',
+            'interface' => 'sometimes|string|max:150',
+            'lecture' => 'sometimes|integer|digits:20',
+            'ecriture' => 'sometimes|integer|digits:20',
+            'description' => 'sometimes|string|max:600',
+            'marque' => 'sometimes|string|max:150',
+            'nom' => 'sometimes|string|max:150'
         ];
     }
 }

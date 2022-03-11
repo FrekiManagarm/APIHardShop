@@ -24,7 +24,13 @@ class RAMUpdateRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'image' => 'sometimes|string|max:150',
+            'capacité' => 'sometimes|string|max:150',
+            'interface' => 'sometimes|string|max:150',
+            'description' => 'sometimes|string|max:150',
+            'latence' => 'sometimes|string|max:150',
+            'nom' => 'sometimes|string|max:150',
+            'quantité' => 'sometimes|integer|digits:11',
         ];
     }
 }

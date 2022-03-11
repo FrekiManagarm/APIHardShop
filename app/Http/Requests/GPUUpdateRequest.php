@@ -24,7 +24,14 @@ class GPUUpdateRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'image' => 'sometimes|string|max:150',
+            'nom' => 'sometimes|string|max:150',
+            'frequence' => 'sometimes|string|max:100',
+            'frequence_boost' => 'sometimes|string|max:150',
+            'nb_coeur' => 'sometimes|integer|digits:11',
+            'nb_threads' => 'sometimes|integer|digits:11',
+            'nb_video_output' => 'sometimes|integer|digits:11',
+            'description' => 'sometimes|string|max:600'
         ];
     }
 }

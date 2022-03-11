@@ -24,7 +24,15 @@ class CoolingUpdateRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'bruit' => 'sometimes|string|max:150',
+            'format' => 'sometimes|string|max:150',
+            'marque' => 'sometimes|string|max:150',
+            'matériaux' => 'sometimes|string|max:150',
+            'description' => 'sometimes|string|max:600',
+            'nom' => 'sometimes|string|max:150',
+            'socket' => 'sometimes|string|max:150',
+            'type' => 'sometimes|string|max:150',
+            'image' => 'sometimes|string|max:150'
         ];
     }
 }

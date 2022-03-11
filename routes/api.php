@@ -1,5 +1,15 @@
 <?php
 
+use App\Http\Controllers\Api\AuthController;
+use App\Http\Controllers\Api\BoitierController;
+use App\Http\Controllers\Api\CoolingController;
+use App\Http\Controllers\Api\CPUController;
+use App\Http\Controllers\Api\GPUController;
+use App\Http\Controllers\Api\HDDController;
+use App\Http\Controllers\Api\MotherBoardController;
+use App\Http\Controllers\Api\PSUController;
+use App\Http\Controllers\Api\RAMController;
+use App\Http\Controllers\Api\SSDController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -15,9 +25,93 @@ use Illuminate\Support\Facades\Route;
 */
 
 // Auth
-Route::post('/register', 'Api\AuthController@register');
-Route::post('/login', 'Api\AuthController@login');
+Route::post('/register', [AuthController::class, 'register']);
+Route::post('/login', [AuthController::class, 'login']);
+
+// CPU
+Route::get('/CPUs', [CPUController::class, 'index']);
+Route::get('/CPU/{id}', [CPUController::class, 'show']);
+
+// GPU
+Route::get('/GPUs', [GPUController::class, 'index']);
+Route::get('/GPU/{id}', [GPUController::class, 'show']);
+
+// RAM
+Route::get('/RAMs', [RAMController::class, 'index']);
+Route::get('/RAM/{id}', [RAMController::class, 'show']);
+
+// MotherBoard
+Route::get('/MotherBoards', [RAMController::class, 'index']);
+Route::get('/MotherBoard/{id}', [RAMController::class, 'show']);
+
+// Cooling
+Route::get('/Coolings', [CoolingController::class, 'index']);
+Route::get('/Cooling/{id}', [CoolingController::class, 'show']);
+
+// SSD
+Route::get('/SSDs', [SSDController::class, 'index']);
+Route::get('/SSD/{id}', [SSDController::class, 'show']);
+
+// HDD
+Route::get('/HDDs', [HDDController::class, 'index']);
+Route::get('/HDD/{id}', [HDDController::class, 'show']);
+
+// Boitier
+Route::get('/Boitiers', [BoitierController::class, 'index']);
+Route::get('/Boitier/{id}', [BoitierController::class, 'show']);
+
+// PSU
+Route::get('/PSUs', [PSUController::class, 'index']);
+Route::get('/PSU/{id}', [PSUController::class, 'show']);
 
 Route::middleware('auth:api')->group(function () {
-    Route::get('get-user', 'Api\AuthController@userInfo');
+
+    // User
+    Route::get('get-user', [AuthController::class, 'userInfo']);
+
+    // CPU
+    Route::post('/CPU', [CPUController::class, 'store']);
+    Route::patch('/CPU/{id}', [CPUController::class, 'update']);
+    Route::delete('/CPU/{id}', [CPUController::class, 'delete']);
+
+    // GPU
+    Route::post('/GPU', [GPUController::class, 'store']);
+    Route::patch('/GPU/{id}', [GPUController::class, 'update']);
+    Route::delete('/GPU/{id}', [GPUController::class, 'delete']);
+    
+    // RAM
+    Route::post('/RAM', [RAMController::class, 'store']);
+    Route::patch('/RAM/{id}', [RAMController::class, 'update']);
+    Route::delete('/RAM/{id}', [RAMController::class, 'delete']);
+
+    // MotherBoard
+    Route::post('/MotherBoard', [MotherBoardController::class, 'store']);
+    Route::patch('/MotherBoard/{id}', [MotherBoardController::class, 'update']);
+    Route::delete('/MotherBoard/{id}', [MotherBoardController::class, 'delete']);
+
+    // Cooling
+    Route::post('/Cooling', [CoolingController::class, 'store']);
+    Route::patch('/Cooling/{id}', [CoolingController::class, 'update']);
+    Route::delete('/Cooling/{id}', [CoolingController::class, 'delete']);
+
+    // SSD
+    Route::post('/SSD', [SSDController::class, 'store']);
+    Route::patch('/SSD/{id}', [SSDController::class, 'update']);
+    Route::delete('/SSD/{id}', [SSDController::class, 'delete']);
+
+    // HDD
+    Route::post('/HDD', [HDDController::class, 'store']);
+    Route::patch('/HDD/{id}', [HDDController::class, 'update']);
+    Route::delete('/HDD/{id}', [HDDController::class, 'delete']);
+
+    // PSU
+    Route::post('/PSU', [PSUController::class, 'store']);
+    Route::patch('/PSU/{id}', [PSUController::class, 'update']);
+    Route::delete('/PSU/{id}', [PSUController::class, 'delete']);
+
+    // Boitier
+    Route::post('/Boitier', [BoitierController::class, 'store']);
+    Route::patch('/Boitier/{id}', [BoitierController::class, 'update']);
+    Route::delete('/Boitier/{id}', [BoitierController::class, 'delete']);
+
 });

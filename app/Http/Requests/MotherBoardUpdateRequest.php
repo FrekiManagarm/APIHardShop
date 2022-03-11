@@ -24,7 +24,14 @@ class MotherBoardUpdateRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'image' => 'sometimes|string|max:150',
+            'constructeur' => 'sometimes|string|max:150',
+            'format' => 'sometimes|string|max:150',
+            'fréquence_mémoire' => 'sometimes|string|max:150',
+            'description' => 'sometimes|string|max:150',
+            'nom' => 'sometimes|string|max:150',
+            'proco_compatible' => 'sometimes|string|max:250',
+            'socket' => 'sometimes|string|max:150'
         ];
     }
 }
