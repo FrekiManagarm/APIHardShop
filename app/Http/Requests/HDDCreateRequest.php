@@ -25,13 +25,13 @@ class HDDCreateRequest extends FormRequest
     {
         return [
             'image' => 'required|string|max:150',
-            'RPM' => 'required|integer|digits:11',
-            'capacité' => 'required|integer|digits:11',
+            'RPM' => 'required|integer',
+            'capacité' => 'required|integer',
             'format' => 'required|string|max:150',
             'interface' => 'required|string|max:150',
             'description' => 'sometimes|string|max:600',
             'marque' => 'required|string|max:150',
-            'mémoire_cache' => 'required|integer|digits:11',
+            'mémoire_cache' => 'required|integer',
             'nom' => 'required|string|max:150',
             'transfert' => 'required|string|max:150'
         ];

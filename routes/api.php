@@ -41,8 +41,8 @@ Route::get('/RAMs', [RAMController::class, 'index']);
 Route::get('/RAM/{id}', [RAMController::class, 'show']);
 
 // MotherBoard
-Route::get('/MotherBoards', [RAMController::class, 'index']);
-Route::get('/MotherBoard/{id}', [RAMController::class, 'show']);
+Route::get('/MotherBoards', [MotherBoardController::class, 'index']);
+Route::get('/MotherBoard/{id}', [MotherBoardController::class, 'show']);
 
 // Cooling
 Route::get('/Coolings', [CoolingController::class, 'index']);

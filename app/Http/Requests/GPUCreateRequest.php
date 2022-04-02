@@ -27,10 +27,10 @@ class GPUCreateRequest extends FormRequest
             'image' => 'required|string|max:150',
             'nom' => 'required|string|max:150',
             'frequence' => 'required|string|max:100',
-            'frequence_boost' => 'required|string|max:150',
-            'nb_coeur' => 'required|integer|digits:11',
-            'nb_threads' => 'required|integer|digits:11',
-            'nb_video_output' => 'required|integer|digits:11',
+            'frequence_boost' => 'string|max:150',
+            'nb_coeur' => 'required|integer',
+            'nb_ventilateur' => 'required|integer',
+            'nb_video_output' => 'required|integer',
             'description' => 'sometimes|string|max:600'
         ];
     }

@@ -24,7 +24,14 @@ class PSUCreateRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            "image" => 'string|required|max:191',
+            "certif" => 'string|required|max:191',
+            "format" => 'string|required|max:25',
+            "description" => 'string|sometimes|max:600',
+            "marque" => 'required|string|max:191',
+            "modulaire" => 'required|string|max:191',
+            "nom" => 'string|required|max:255',
+            "puissance" => 'integer|required',
         ];
     }
 }

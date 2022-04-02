@@ -25,12 +25,12 @@ class SSDCreateRequest extends FormRequest
     {
         return [
             'image' => 'required|string|max:150',
-            'capacité' => 'required|integer|digits:20',
+            'capacité' => 'required|integer',
             'connectique' => 'required|string|max:150',
             'format' => 'required|string|max:150',
             'interface' => 'required|string|max:150',
-            'lecture' => 'required|integer|digits:20',
-            'ecriture' => 'required|integer|digits:20',
+            'lecture' => 'required|integer',
+            'ecriture' => 'required|integer',
             'description' => 'sometimes|string|max:600',
             'marque' => 'required|string|max:150',
             'nom' => 'required|string|max:150'

@@ -9,7 +9,7 @@ class HDD extends Model
 {
     use HasFactory;
 
-    protected $table = "hdd";
+    protected $table = "HDDs";
 
     protected $fillable = [
         'image',
