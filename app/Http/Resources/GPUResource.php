@@ -21,7 +21,7 @@ class GPUResource extends JsonResource
             'frequence' => $this->frequence,
             'frequence_boost' => $this->frequence_boost,
             'nb_coeur' => $this->nb_coeur,
-            'nb_ventilateur' => $this->nb_ventilateur,
+            'nb_ventilateurs' => $this->nb_ventilateurs,
             'nb_video_output' => $this->nb_video_output,
             'description' => $this->description
         ];
