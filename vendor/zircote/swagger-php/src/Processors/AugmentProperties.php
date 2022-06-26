@@ -20,27 +20,7 @@ use OpenApi\Util;
  */
 class AugmentProperties
 {
-    public static $types = [
-        'array' => 'array',
-        'byte' => ['string', 'byte'],
-        'boolean' => 'boolean',
-        'bool' => 'boolean',
-        'int' => 'integer',
-        'integer' => 'integer',
-        'long' => ['integer', 'long'],
-        'float' => ['number', 'float'],
-        'double' => ['number', 'double'],
-        'string' => 'string',
-        'date' => ['string', 'date'],
-        'datetime' => ['string', 'date-time'],
-        '\\datetime' => ['string', 'date-time'],
-        'datetimeimmutable' => ['string', 'date-time'],
-        '\\datetimeimmutable' => ['string', 'date-time'],
-        'datetimeinterface' => ['string', 'date-time'],
-        '\\datetimeinterface' => ['string', 'date-time'],
-        'number' => 'number',
-        'object' => 'object',
-    ];
+    use DocblockTrait;
 
     public function __invoke(Analysis $analysis)
     {
@@ -80,8 +60,8 @@ class AugmentProperties
             if (Generator::isDefault($property->description) && isset($varMatches['description'])) {
                 $property->description = trim($varMatches['description']);
             }
-            if (Generator::isDefault($property->description) && $property->isRoot()) {
-                $property->description = $context->phpdocContent();
+            if (Generator::isDefault($property->description) && $this->isRoot($property)) {
+                $property->description = $this->extractContent($context->comment);
             }
 
             if (Generator::isDefault($property->example) && preg_match('/@example\s+([ \t])?(?<example>.+)?$/im', $comment, $varMatches)) {
@@ -90,14 +70,14 @@ class AugmentProperties
         }
     }
 
-    protected function toRefKey(Context $context, $name)
+    protected function toRefKey(Context $context, ?string $name): string
     {
         $fqn = strtolower($context->fullyQualifiedName($name));
 
         return ltrim($fqn, '\\');
     }
 
-    protected function augmentType(Analysis $analysis, Property $property, Context $context, array $refs, array $varMatches)
+    protected function augmentType(Analysis $analysis, Property $property, Context $context, array $refs, array $varMatches): void
     {
         // docblock typehints
         if (isset($varMatches['type'])) {
@@ -123,22 +103,24 @@ class AugmentProperties
             if (!Generator::isDefault($property->ref) && $typeMatches[2] === '' && $property->nullable) {
                 $refKey = $this->toRefKey($context, $type);
                 $property->oneOf = [
-                    new Schema([
+                    $schema = new Schema([
                         'ref' => $refs[$refKey],
                         '_context' => $property->_context,
                         '_aux' => true,
                     ]),
                 ];
+                $analysis->addAnnotation($schema, $schema->_context);
                 $property->nullable = true;
             } elseif ($typeMatches[2] === '[]') {
                 if (Generator::isDefault($property->items)) {
-                    $property->items = new Items(
+                    $property->items = $items = new Items(
                         [
                             'type' => $property->type,
                             '_context' => new Context(['generated' => true], $context),
                             '_aux' => true,
                         ]
                     );
+                    $analysis->addAnnotation($items, $items->_context);
                     if (!Generator::isDefault($property->ref)) {
                         $property->items->ref = $property->ref;
                         $property->ref = Generator::UNDEFINED;
@@ -157,7 +139,7 @@ class AugmentProperties
             if (!Util::mapNativeType($property, $type)) {
                 $refKey = $this->toRefKey($context, $type);
                 if (Generator::isDefault($property->ref) && array_key_exists($refKey, $refs)) {
-                    $this->applyRef($property, $refs[$refKey]);
+                    $this->applyRef($analysis, $property, $refs[$refKey]);
                 } else {
                     if ($typeSchema = $analysis->getSchemaForSource($context->type)) {
                         if (Generator::isDefault($property->format)) {
@@ -166,6 +148,12 @@ class AugmentProperties
                         }
                     }
                 }
+            }
+        }
+
+        if (!Generator::isDefault($property->const) && Generator::isDefault($property->type)) {
+            if (!Util::mapNativeType($property, gettype($property->const))) {
+                $property->type = Generator::UNDEFINED;
             }
         }
     }
@@ -191,16 +179,17 @@ class AugmentProperties
         return implode('|', $types);
     }
 
-    protected function applyRef(Property $property, string $ref): void
+    protected function applyRef(Analysis $analysis, Property $property, string $ref): void
     {
         if ($property->nullable === true) {
             $property->oneOf = [
-                new Schema([
+                $schema = new Schema([
                     'ref' => $ref,
                     '_context' => $property->_context,
                     '_aux' => true,
                 ]),
             ];
+            $analysis->addAnnotation($schema, $schema->_context);
         } else {
             $property->ref = $ref;
         }

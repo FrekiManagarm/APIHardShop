@@ -488,7 +488,11 @@ class Collection implements ArrayAccess, CanBeEscapedWhenCastToString, Enumerabl
             }
 
             foreach ($groupKeys as $groupKey) {
-                $groupKey = is_bool($groupKey) ? (int) $groupKey : $groupKey;
+                $groupKey = match (true) {
+                    is_bool($groupKey) => (int) $groupKey,
+                    $groupKey instanceof \Stringable => (string) $groupKey,
+                    default => $groupKey,
+                };
 
                 if (! array_key_exists($groupKey, $results)) {
                     $results[$groupKey] = new static;
@@ -577,12 +581,16 @@ class Collection implements ArrayAccess, CanBeEscapedWhenCastToString, Enumerabl
     /**
      * Concatenate values of a given key as a string.
      *
-     * @param  string  $value
+     * @param  callable|string  $value
      * @param  string|null  $glue
      * @return string
      */
     public function implode($value, $glue = null)
     {
+        if ($this->useAsCallable($value)) {
+            return implode($glue ?? '', $this->map($value)->all());
+        }
+
         $first = $this->first();
 
         if (is_array($first) || (is_object($first) && ! $first instanceof Stringable)) {
@@ -693,7 +701,7 @@ class Collection implements ArrayAccess, CanBeEscapedWhenCastToString, Enumerabl
     /**
      * Get the values of a given key.
      *
-     * @param  string|array<array-key, string>  $value
+     * @param  string|int|array<array-key, string>  $value
      * @param  string|null  $key
      * @return static<int, mixed>
      */
@@ -712,11 +720,7 @@ class Collection implements ArrayAccess, CanBeEscapedWhenCastToString, Enumerabl
      */
     public function map(callable $callback)
     {
-        $keys = array_keys($this->items);
-
-        $items = array_map($callback, $this->items, $keys);
-
-        return new static(array_combine($keys, $items));
+        return new static(Arr::map($this->items, $callback));
     }
 
     /**
@@ -838,8 +842,8 @@ class Collection implements ArrayAccess, CanBeEscapedWhenCastToString, Enumerabl
 
         $position = 0;
 
-        foreach ($this->items as $item) {
-            if ($position % $step === $offset) {
+        foreach ($this->slice($offset)->items as $item) {
+            if ($position % $step === 0) {
                 $new[] = $item;
             }
 
@@ -852,7 +856,7 @@ class Collection implements ArrayAccess, CanBeEscapedWhenCastToString, Enumerabl
     /**
      * Get the items with the specified keys.
      *
-     * @param  \Illuminate\Support\Enumerable<array-key, TKey>|array<array-key, TKey>  $keys
+     * @param  \Illuminate\Support\Enumerable<array-key, TKey>|array<array-key, TKey>|string  $keys
      * @return static
      */
     public function only($keys)

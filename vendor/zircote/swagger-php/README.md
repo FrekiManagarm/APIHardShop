@@ -1,6 +1,6 @@
 [![Build Status](https://img.shields.io/github/workflow/status/zircote/swagger-php/build?style=flat-square)](https://github.com/zircote/swagger-php/actions?query=workflow:build)
 [![Total Downloads](https://img.shields.io/packagist/dt/zircote/swagger-php.svg?style=flat-square)](https://packagist.org/packages/zircote/swagger-php)
-[![License](https://img.shields.io/badge/license-Apache2.0-blue.svg?style=flat-square)](LICENSE-2.0.txt)
+[![License](https://img.shields.io/badge/license-Apache2.0-blue.svg?style=flat-square)](LICENSE)
 
 # swagger-php
 
@@ -24,6 +24,10 @@ By default the spec will be in version `3.0.0`. The command line option `--versi
 to `3.1.0`.
 
 Programmatically, the method `Generator::setVersion()` can be used to change the version.
+
+## Requirements
+
+`swagger-php` requires at least PHP 7.2 for annotations and PHP 8.1 for using attributes.
 
 ## Installation (with [Composer](https://getcomposer.org))
 
@@ -67,7 +71,7 @@ $openapi = \OpenApi\Generator::scan(['/path/to/project']);
 header('Content-Type: application/x-yaml');
 echo $openapi->toYaml();
 ```
-Documentation of how to use the `Generator` class can be found in the [Generator Migration](https://zircote.github.io/swagger-php/Generator-migration.html) guide.
+Documentation of how to use the `Generator` class can be found in the [Generator reference](https://zircote.github.io/swagger-php/reference/generator).
 
 ### Usage from the Command Line Interface
 
@@ -128,6 +132,11 @@ composer test
 ### Running unit tests only:
 ```bash
 ./bin/phpunit
+```
+
+### Regenerate annotation/attribute reference markup docs
+```bash
+composer docs:refgen
 ```
 
 ### Running linting only:

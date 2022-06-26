@@ -10,7 +10,15 @@ These limits are dictated by the PHP reflection API, specifically where it provi
 
 This means stand-alone annotations are no longer supported and ignored as `swagger-php` cannot 'see' them any more.
 
-Most commonly this manifests with a warning about the required `@OA\Info` not being found. While most annotations have specifc
+Supported locations:
+* class
+* interface
+* trait
+* method
+* property
+* class/interface const
+
+Most commonly this manifests with a warning about the required `@OA\Info` not being found. While most annotations have specific
 related code, the info annotation (and a few more) is kind of global.
 
 The simplest solution to avoid this issue is to add a 'dummy' class to the docblock and add
@@ -61,3 +69,12 @@ Another reason for this error could be that your class actually has the wrong na
 
 Depending on your framework this might still work in the context of your app, but the composer autoloader 
 alone might not be able to load your class (assuming you are using composer).
+
+## No output from `openapi` command line tool
+
+Depending on your PHP configuration, running the `openapi` command line tool might result in no output at all.
+
+The reason for this is that `openapi` currently uses the [`error_log`](https://www.php.net/manual/en/function.error-log.php)
+function for all output.
+
+So if this is configured to write to a file, then it will seem like the command is broken. 

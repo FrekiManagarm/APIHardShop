@@ -21,7 +21,7 @@ abstract class AbstractAnnotation implements \JsonSerializable
      * For further details see https://github.com/OAI/OpenAPI-Specification/blob/main/versions/3.1.0.md#specificationExtensions
      * The keys inside the array will be prefixed with `x-`.
      *
-     * @var array
+     * @var array<string,mixed>
      */
     public $x = Generator::UNDEFINED;
 
@@ -59,6 +59,7 @@ abstract class AbstractAnnotation implements \JsonSerializable
 
     /**
      * Specify the type of the property.
+     *
      * Examples:
      *   'name' => 'string' // a string
      *   'required' => 'boolean', // true or false
@@ -66,7 +67,7 @@ abstract class AbstractAnnotation implements \JsonSerializable
      *   'in' => ["query", "header", "path", "formData", "body"] // must be one on these
      *   'oneOf' => [Schema::class] // array of schema objects.
      *
-     * @var array
+     * @var array<string,string|array<string>>
      */
     public static $_types = [];
 
@@ -77,21 +78,21 @@ abstract class AbstractAnnotation implements \JsonSerializable
      *   Parameter::clas => ['parameters'],  // Append @OA\Parameter annotations the parameters array.
      *   PathItem::clas => ['paths', 'path'],  // Append @OA\PathItem annotations the paths array and use path as key.
      *
-     * @var array<class-string<AbstractAnnotation>,string|string[]>
+     * @var array<class-string<AbstractAnnotation>,string|array<string>>
      */
     public static $_nested = [];
 
     /**
      * Reverse mapping of $_nested with the allowed parent annotations.
      *
-     * @var class-string<AbstractAnnotation>[]
+     * @var array<class-string<AbstractAnnotation>>
      */
     public static $_parents = [];
 
     /**
      * List of properties are blacklisted from the JSON output.
      *
-     * @var array
+     * @var array<string>
      */
     public static $_blacklist = ['_context', '_unmerged', '_analysis', '_aux', 'attachables'];
 
@@ -105,9 +106,11 @@ abstract class AbstractAnnotation implements \JsonSerializable
         } else {
             $this->_context = Context::detect(1);
         }
+
         if ($this->_context->is('annotations') === false) {
             $this->_context->annotations = [];
         }
+
         $this->_context->annotations[] = $this;
         $nestedContext = new Context(['nested' => $this], $this->_context);
         foreach ($properties as $property => $value) {
@@ -138,6 +141,15 @@ abstract class AbstractAnnotation implements \JsonSerializable
                 if ($value !== Generator::UNDEFINED) {
                     $this->_context->logger->warning('Unexpected parameter "' . $property . '" in ' . $this->identity());
                 }
+            }
+        }
+
+        if ($this instanceof OpenApi) {
+            if ($this->_context->root()->version) {
+                // override via `Generator::setVersion()`
+                $this->openapi = $this->_context->root()->version;
+            } else {
+                $this->_context->root()->version = $this->openapi;
             }
         }
     }
@@ -253,9 +265,9 @@ abstract class AbstractAnnotation implements \JsonSerializable
     }
 
     /**
-     * Generate the documentation in YAML format.
+     * Generate the documentation in JSON format.
      */
-    public function toJson($flags = null): string
+    public function toJson(?int $flags = null): string
     {
         if ($flags === null) {
             $flags = JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE | JSON_INVALID_UTF8_IGNORE;
@@ -277,8 +289,6 @@ abstract class AbstractAnnotation implements \JsonSerializable
     }
 
     /**
-     * Customize the way json_encode() renders the annotations.
-     *
      * @return mixed
      */
     #[\ReturnTypeWillChange]
@@ -386,6 +396,7 @@ abstract class AbstractAnnotation implements \JsonSerializable
         if (in_array($this, $skip, true)) {
             return true;
         }
+
         $valid = true;
 
         // Report orphaned annotations
@@ -437,6 +448,7 @@ abstract class AbstractAnnotation implements \JsonSerializable
                 }
             }
         }
+
         if (property_exists($this, 'ref') && !Generator::isDefault($this->ref) && $this->ref !== null) {
             if (substr($this->ref, 0, 2) === '#/' && count($stack) > 0 && $stack[0] instanceof OpenApi) {
                 // Internal reference
@@ -498,7 +510,7 @@ abstract class AbstractAnnotation implements \JsonSerializable
      *
      * @param array|object $fields
      */
-    private static function _validate($fields, array $stack, array $skip, string $baseRef, $context): bool
+    private static function _validate($fields, array $stack, array $skip, string $baseRef, ?object $context): bool
     {
         $valid = true;
         $blacklist = [];
@@ -549,20 +561,6 @@ abstract class AbstractAnnotation implements \JsonSerializable
         }
 
         return $this->_identity($properties);
-    }
-
-    /**
-     * An annotation is a root if it is the top-level / outermost annotation in a PHP docblock.
-     */
-    public function isRoot(): bool
-    {
-        if (!$this->_context) {
-            return true;
-        }
-
-        $count = count($this->_context->annotations);
-
-        return $count && $this->_context->annotations[$count - 1] === $this;
     }
 
     /**
