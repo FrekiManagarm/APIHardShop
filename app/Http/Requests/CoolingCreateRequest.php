@@ -32,7 +32,8 @@ class CoolingCreateRequest extends FormRequest
             'nom' => 'required|string|max:150',
             'socket' => 'required|string|max:150',
             'type' => 'required|string|max:150',
-            'image' => 'required|string|max:150'
+            'image' => 'required|string|max:150',
+            'link' => 'required|string'
         ];
     }
 }

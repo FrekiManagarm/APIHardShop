@@ -23,7 +23,8 @@ class GPUResource extends JsonResource
             'nb_coeur' => $this->nb_coeur,
             'nb_ventilateurs' => $this->nb_ventilateurs,
             'nb_video_output' => $this->nb_video_output,
-            'description' => $this->description
+            'description' => $this->description,
+            'link' => $this->link
         ];
     }
 }

@@ -25,6 +25,7 @@ return new class extends Migration
             $table->integer('mémoire_cache');
             $table->string('nom');
             $table->string('transfert');
+            $table->string('link');
             $table->timestamps();
             $table->softDeletes();
         });

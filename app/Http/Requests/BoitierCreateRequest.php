@@ -33,6 +33,7 @@ class BoitierCreateRequest extends FormRequest
             'format' => 'required|string|max:50',
             'nom' => 'required|string|max:150',
             'ventilateur' => 'required|boolean',
+            'link' => 'required|string'
         ];
     }
 }

@@ -26,6 +26,7 @@ class BoitierResource extends JsonResource
             'format' => $this->format,
             'nom' => $this->nom,
             'ventilateur' => $this->ventilateur,
+            'link' => $this->link
         ];
     }
 }

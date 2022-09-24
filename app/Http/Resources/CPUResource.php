@@ -29,7 +29,8 @@ class CPUResource extends JsonResource
             'description' => $this->description,
             'overclocking' => $this->overclocking,
             'socket' => $this->socket,
-            'type' => $this->type
+            'type' => $this->type,
+            'link' => $this->link
         ];
     }
 }

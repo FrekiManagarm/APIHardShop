@@ -25,6 +25,7 @@ return new class extends Migration
             $table->string('description', 600)->nullable()->default(NULL);
             $table->string('marque');
             $table->string('nom');
+            $table->string('link');
             $table->timestamps();
             $table->softDeletes();
         });

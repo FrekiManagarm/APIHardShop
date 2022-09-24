@@ -26,6 +26,7 @@ class CPU extends Model
         'overclocking',
         'socket',
         'type',
+        'link'
     ];
 
     public function configs() {

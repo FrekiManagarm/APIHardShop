@@ -22,6 +22,7 @@ return new class extends Migration
             $table->string('description', 600)->nullable()->default(NULL);
             $table->string('nom', 150);
             $table->integer('quantité');
+            $table->string('link');
             $table->timestamps();
         });
     }

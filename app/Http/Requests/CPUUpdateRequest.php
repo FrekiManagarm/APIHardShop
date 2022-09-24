@@ -37,7 +37,8 @@ class CPUUpdateRequest extends FormRequest
             'description' => 'sometimes|string|max:600',
             'overclocking' => 'sometimes|boolean',
             'socket' => 'sometimes|string|max:150',
-            'type' => 'sometimes|string|max:150'
+            'type' => 'sometimes|string|max:150',
+            'link' => 'sometimes|string'
         ];
     }
 }

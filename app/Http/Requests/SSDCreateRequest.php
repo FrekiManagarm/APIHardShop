@@ -33,7 +33,8 @@ class SSDCreateRequest extends FormRequest
             'ecriture' => 'required|integer',
             'description' => 'sometimes|string|max:600',
             'marque' => 'required|string|max:150',
-            'nom' => 'required|string|max:150'
+            'nom' => 'required|string|max:150',
+            'link' => 'required|string'
         ];
     }
 }

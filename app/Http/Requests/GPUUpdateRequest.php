@@ -31,7 +31,8 @@ class GPUUpdateRequest extends FormRequest
             'nb_coeur' => 'sometimes|integer|digits:11',
             'nb_threads' => 'sometimes|integer|digits:11',
             'nb_video_output' => 'sometimes|integer|digits:11',
-            'description' => 'sometimes|string|max:600'
+            'description' => 'sometimes|string|max:600',
+            'link' => 'sometimes|string',
         ];
     }
 }

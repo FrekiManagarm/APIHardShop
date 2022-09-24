@@ -24,7 +24,8 @@ class CoolingResource extends JsonResource
             'nom' => $this->nom,
             'socket' => $this->socket,
             'type' => $this->type,
-            'image' => $this->image
+            'image' => $this->image,
+            'link' => $this->link
         ];
     }
 }

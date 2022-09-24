@@ -21,6 +21,7 @@ class Boitier extends Model
         'format',
         'nom',
         'ventilateur',
+        'link'
     ];
 
     public function configs() {

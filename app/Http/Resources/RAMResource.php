@@ -22,7 +22,8 @@ class RAMResource extends JsonResource
             'latence' => $this->latence,
             'description' => $this->description,
             'nom' => $this->nom,
-            'quantité' => $this->quantité
+            'quantité' => $this->quantité,
+            'link' => $this->link
         ];
     }
 }

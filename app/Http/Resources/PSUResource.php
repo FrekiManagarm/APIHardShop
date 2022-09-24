@@ -23,7 +23,8 @@ class PSUResource extends JsonResource
             'marque' => $this->marque,
             'modulaire' => $this->modulaire,
             'nom' => $this->nom,
-            'puissance' => $this->puissance
+            'puissance' => $this->puissance,
+            'link' => $this->link
         ];
     }
 }

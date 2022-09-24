@@ -31,7 +31,8 @@ class MotherBoardUpdateRequest extends FormRequest
             'description' => 'sometimes|string|max:150',
             'nom' => 'sometimes|string|max:150',
             'proco_compatible' => 'sometimes|string|max:250',
-            'socket' => 'sometimes|string|max:150'
+            'socket' => 'sometimes|string|max:150',
+            'link' => 'sometimes|string'
         ];
     }
 }

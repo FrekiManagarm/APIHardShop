@@ -31,7 +31,8 @@ class GPUCreateRequest extends FormRequest
             'nb_coeur' => 'required|integer',
             'nb_ventilateur' => 'required|integer',
             'nb_video_output' => 'required|integer',
-            'description' => 'sometimes|string|max:600'
+            'description' => 'sometimes|string|max:600',
+            'link' => 'required|string'
         ];
     }
 }

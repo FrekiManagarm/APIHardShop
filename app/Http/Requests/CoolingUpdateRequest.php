@@ -32,7 +32,8 @@ class CoolingUpdateRequest extends FormRequest
             'nom' => 'sometimes|string|max:150',
             'socket' => 'sometimes|string|max:150',
             'type' => 'sometimes|string|max:150',
-            'image' => 'sometimes|string|max:150'
+            'image' => 'sometimes|string|max:150',
+            'link' => 'sometimes|string'
         ];
     }
 }

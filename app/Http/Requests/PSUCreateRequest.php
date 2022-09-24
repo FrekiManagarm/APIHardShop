@@ -32,6 +32,7 @@ class PSUCreateRequest extends FormRequest
             "modulaire" => 'required|string|max:191',
             "nom" => 'string|required|max:255',
             "puissance" => 'integer|required',
+            'link' => 'required|string'
         ];
     }
 }

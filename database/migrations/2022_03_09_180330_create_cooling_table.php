@@ -23,6 +23,7 @@ return new class extends Migration
             $table->string('nom');
             $table->string('socket');
             $table->string('type');
+            $table->string('link');
             $table->string('image')->nullable()->default(NULL);
             $table->timestamps();
             $table->softDeletes();

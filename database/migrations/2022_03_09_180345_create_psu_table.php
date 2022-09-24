@@ -23,6 +23,7 @@ return new class extends Migration
             $table->string('modulaire');
             $table->string('nom');
             $table->integer('puissance');
+            $table->string('link');
             $table->timestamps();
             $table->softDeletes();
         });

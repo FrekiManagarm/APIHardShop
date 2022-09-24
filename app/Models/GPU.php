@@ -19,7 +19,8 @@ class GPU extends Model
         'nb_coeur',
         'nb_ventilateurs',
         'nb_video_output',
-        'description'
+        'description',
+        'link'
     ];
 
     public function configs() {

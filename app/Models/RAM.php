@@ -18,7 +18,8 @@ class RAM extends Model
         'latence',
         'description',
         'nom',
-        'quantité'
+        'quantité',
+        'link'
     ];
 
     public function configs() {

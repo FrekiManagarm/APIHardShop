@@ -33,7 +33,8 @@ class HDDUpdateRequest extends FormRequest
             'marque' => 'sometimes|string|max:150',
             'mémoire_cache' => 'sometimes|integer|digits:11',
             'nom' => 'sometimes|string|max:150',
-            'transfert' => 'sometimes|string|max:150'
+            'transfert' => 'sometimes|string|max:150',
+            'link' => 'sometimes|string'
         ];
     }
 }

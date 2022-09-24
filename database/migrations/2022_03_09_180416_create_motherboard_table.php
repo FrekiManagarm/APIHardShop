@@ -23,6 +23,7 @@ return new class extends Migration
             $table->string('nom', 150);
             $table->string('proco_compatible');
             $table->string('socket');
+            $table->string('link');
             $table->timestamps();
             $table->softDeletes();
         });

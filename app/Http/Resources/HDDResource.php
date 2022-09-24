@@ -25,7 +25,8 @@ class HDDResource extends JsonResource
             'marque' => $this->marque,
             'mémoire_cache' => $this->mémoire_cache,
             'nom' => $this->nom,
-            'transfert' => $this->transfert
+            'transfert' => $this->transfert,
+            'link' => $this->link
         ];
     }
 }

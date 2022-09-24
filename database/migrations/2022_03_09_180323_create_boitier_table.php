@@ -24,6 +24,7 @@ return new class extends Migration
             $table->string('format');
             $table->string('nom');
             $table->boolean("ventilateur");
+            $table->string('link');
             $table->timestamps();
             $table->softDeletes();
         });

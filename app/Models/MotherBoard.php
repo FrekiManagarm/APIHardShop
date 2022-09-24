@@ -20,6 +20,7 @@ class MotherBoard extends Model
         'nom',
         'proco_compatible',
         'socket',
+        'link'
     ];
 
     public function configs() {

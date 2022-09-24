@@ -24,7 +24,15 @@ class PSUUpdateRequest extends FormRequest
     public function rules()
     {
         return [
-            
+            "image" => 'string|sometimes|max:191',
+            "certif" => 'string|sometimes|max:191',
+            "format" => 'string|sometimes|max:25',
+            "description" => 'string|sometimes|max:600',
+            "marque" => 'sometimes|string|max:191',
+            "modulaire" => 'sometimes|string|max:191',
+            "nom" => 'string|sometimes|max:255',
+            "puissance" => 'integer|sometimes',
+            'link' => 'sometimes|string'
         ];
     }
 }

@@ -20,7 +20,8 @@ class Cooling extends Model
         'nom',
         'socket',
         'type',
-        'image'
+        'image',
+        'link'
     ];
 
     public function configs() {

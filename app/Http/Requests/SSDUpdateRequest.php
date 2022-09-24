@@ -33,7 +33,8 @@ class SSDUpdateRequest extends FormRequest
             'ecriture' => 'sometimes|integer|digits:20',
             'description' => 'sometimes|string|max:600',
             'marque' => 'sometimes|string|max:150',
-            'nom' => 'sometimes|string|max:150'
+            'nom' => 'sometimes|string|max:150',
+            'link' => 'sometimes|string'
         ];
     }
 }

@@ -19,7 +19,8 @@ class PSU extends Model
         'marque',
         'modulaire',
         'nom',
-        'puissance'
+        'puissance',
+        'link'
     ];
 
     public function configs() {

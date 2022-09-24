@@ -23,6 +23,7 @@ return new class extends Migration
             $table->integer('nb_ventilateurs')->nullable()->default(NULL);
             $table->integer('nb_video_output');
             $table->string('description', 600)->nullable()->default(NULL);
+            $table->string('link');
             $table->timestamps();
             $table->softDeletes();
         });

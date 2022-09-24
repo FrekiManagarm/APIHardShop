@@ -23,7 +23,8 @@ class MotherBoardResource extends JsonResource
             'description' => $this->description,
             'nom' => $this->nom,
             'proco_compatible' => $this->proco_compatible,
-            'socket' => $this->socket
+            'socket' => $this->socket,
+            'link' => $this->link
         ];
     }
 }

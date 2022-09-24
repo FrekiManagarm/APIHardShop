@@ -21,7 +21,8 @@ class SSD extends Model
         'ecriture',
         'description',
         'marque',
-        'nom'
+        'nom',
+        'link'
     ];
 
     public function configs() {

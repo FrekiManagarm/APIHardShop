@@ -26,6 +26,7 @@ class SSDResource extends JsonResource
             'description' => $this->description,
             'marque' => $this->marque,
             'nom' => $this->nom,
+            'link' => $this->link
         ];
     }
 }

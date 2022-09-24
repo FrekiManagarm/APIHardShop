@@ -22,6 +22,7 @@ class HDD extends Model
         'mémoire_cache',
         'nom',
         'transfert',
+        'link'
     ];
 
     public function configs() {

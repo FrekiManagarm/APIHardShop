@@ -29,6 +29,7 @@ return new class extends Migration
             $table->boolean('overclocking');
             $table->string('socket');
             $table->string('type');
+            $table->string('link');
             $table->timestamps();
             $table->softDeletes();
         });

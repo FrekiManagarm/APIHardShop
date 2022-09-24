@@ -31,6 +31,7 @@ class RAMCreateRequest extends FormRequest
             'latence' => 'required|string|max:150',
             'nom' => 'required|string|max:150',
             'quantité' => 'required|integer',
+            'link' => 'required|string'
         ];
     }
 }
