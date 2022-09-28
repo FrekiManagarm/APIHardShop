@@ -8,9 +8,10 @@ namespace OpenApi\Processors;
 
 use OpenApi\Analysis;
 use OpenApi\Annotations\Schema as AnnotationSchema;
+use OpenApi\Annotations\ServerVariable as AnnotationsServerVariable;
 use OpenApi\Attributes\Schema as AttributeSchema;
+use OpenApi\Attributes\ServerVariable as AttributesServerVariable;
 use OpenApi\Generator;
-use OpenApi\Util;
 
 /**
  * Look at all enums with a schema and:
@@ -19,12 +20,20 @@ use OpenApi\Util;
  */
 class ExpandEnums
 {
+    use Concerns\TypesTrait;
+
     public function __invoke(Analysis $analysis)
     {
         if (!class_exists('\\ReflectionEnum')) {
             return;
         }
 
+        $this->expandContextEnum($analysis);
+        $this->expandSchemaEnum($analysis);
+    }
+
+    private function expandContextEnum(Analysis $analysis): void
+    {
         /** @var AnnotationSchema[] $schemas */
         $schemas = $analysis->getAnnotationsOfType([AnnotationSchema::class, AttributeSchema::class], true);
 
@@ -50,7 +59,35 @@ class ExpandEnums
 
                     return $case->name;
                 }, $re->getCases());
-                Util::mapNativeType($schema, $type);
+                $this->mapNativeType($schema, $type);
+            }
+        }
+    }
+
+    private function expandSchemaEnum(Analysis $analysis): void
+    {
+        /** @var AnnotationSchema[] $schemas */
+        $schemas = $analysis->getAnnotationsOfType([
+            AnnotationSchema::class,
+            AttributeSchema::class,
+            AttributesServerVariable::class,
+            AnnotationsServerVariable::class,
+        ]);
+
+        foreach ($schemas as $schema) {
+            if ($schema->enum !== Generator::UNDEFINED && is_string($schema->enum)) {
+                $source = $schema->enum;
+                // Convert to Enum value if it is an Enum class string
+                if (is_a($schema->enum, '\UnitEnum', true)) {
+                    $enums = [];
+                    foreach ($source::cases() as $case) {
+                        $enums[] = $case->value ?? $case->name;
+                    }
+
+                    $schema->enum = $enums;
+                } else {
+                    throw new \InvalidArgumentException("Unexpected enum value, requires specifying the Enum class string: $source");
+                }
             }
         }
     }

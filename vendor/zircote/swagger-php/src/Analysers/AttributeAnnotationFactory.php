@@ -79,6 +79,15 @@ class AttributeAnnotationFactory implements AnnotationFactoryInterface
                         }
                     }
                 }
+
+                if (($rrt = $reflector->getReturnType()) && $rrt instanceof \ReflectionNamedType) {
+                    foreach ($annotations as $annotation) {
+                        if ($annotation instanceof Property && Generator::isDefault($annotation->type)) {
+                            // pick up simple return types
+                            $annotation->type = $rrt->getName();
+                        }
+                    }
+                }
             }
         } finally {
             Generator::$context = null;
@@ -111,22 +120,27 @@ class AttributeAnnotationFactory implements AnnotationFactoryInterface
             return get_class($annotation) != get_class($possibleParent)
                 && ($explicitParent || ($isAttachable && $isParentAllowed));
         };
+
+        $annotationsWithoutParent = [];
         foreach ($annotations as $index => $annotation) {
+            $mergedIntoParent = false;
+
             for ($ii = 0; $ii < count($annotations); ++$ii) {
                 if ($ii === $index) {
                     continue;
                 }
                 $possibleParent = $annotations[$ii];
                 if ($isParent($annotation, $possibleParent)) {
+                    $mergedIntoParent = true; //
                     $possibleParent->merge([$annotation]);
                 }
             }
+
+            if (!$mergedIntoParent) {
+                $annotationsWithoutParent[] = $annotation;
+            }
         }
 
-        $annotations = array_filter($annotations, function ($a) {
-            return !$a instanceof Attachable;
-        });
-
-        return $annotations;
+        return $annotationsWithoutParent;
     }
 }
