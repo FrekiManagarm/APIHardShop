@@ -4,7 +4,7 @@
 
 namespace Composer\Autoload;
 
-class ComposerStaticInit3d48b007b4a03bc33546684d87481f19
+class ComposerStaticInit5cfbd5b18cb0ebf9bd6deb982d4298ed
 {
     public static $files = array (
         '0e6d7bf4a5811bfa5cf40c5ccd6fae6a' => __DIR__ . '/..' . '/symfony/polyfill-mbstring/bootstrap.php',
@@ -385,8 +385,8 @@ class ComposerStaticInit3d48b007b4a03bc33546684d87481f19
         ),
         'Psr\\Http\\Message\\' => 
         array (
-            0 => __DIR__ . '/..' . '/psr/http-factory/src',
-            1 => __DIR__ . '/..' . '/psr/http-message/src',
+            0 => __DIR__ . '/..' . '/psr/http-message/src',
+            1 => __DIR__ . '/..' . '/psr/http-factory/src',
         ),
         'Psr\\Http\\Client\\' => 
         array (
@@ -438,8 +438,8 @@ class ComposerStaticInit3d48b007b4a03bc33546684d87481f19
         ),
         'League\\Uri\\' => 
         array (
-            0 => __DIR__ . '/..' . '/league/uri/src',
-            1 => __DIR__ . '/..' . '/league/uri-interfaces/src',
+            0 => __DIR__ . '/..' . '/league/uri-interfaces/src',
+            1 => __DIR__ . '/..' . '/league/uri/src',
         ),
         'League\\OAuth2\\Server\\' => 
         array (
@@ -525,8 +525,8 @@ class ComposerStaticInit3d48b007b4a03bc33546684d87481f19
         ),
         'Fruitcake\\Cors\\' => 
         array (
-            0 => __DIR__ . '/..' . '/fruitcake/laravel-cors/src',
-            1 => __DIR__ . '/..' . '/fruitcake/php-cors/src',
+            0 => __DIR__ . '/..' . '/fruitcake/php-cors/src',
+            1 => __DIR__ . '/..' . '/fruitcake/laravel-cors/src',
         ),
         'Firebase\\JWT\\' => 
         array (
@@ -6564,10 +6564,10 @@ class ComposerStaticInit3d48b007b4a03bc33546684d87481f19
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
-            $loader->prefixLengthsPsr4 = ComposerStaticInit3d48b007b4a03bc33546684d87481f19::$prefixLengthsPsr4;
-            $loader->prefixDirsPsr4 = ComposerStaticInit3d48b007b4a03bc33546684d87481f19::$prefixDirsPsr4;
-            $loader->prefixesPsr0 = ComposerStaticInit3d48b007b4a03bc33546684d87481f19::$prefixesPsr0;
-            $loader->classMap = ComposerStaticInit3d48b007b4a03bc33546684d87481f19::$classMap;
+            $loader->prefixLengthsPsr4 = ComposerStaticInit5cfbd5b18cb0ebf9bd6deb982d4298ed::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInit5cfbd5b18cb0ebf9bd6deb982d4298ed::$prefixDirsPsr4;
+            $loader->prefixesPsr0 = ComposerStaticInit5cfbd5b18cb0ebf9bd6deb982d4298ed::$prefixesPsr0;
+            $loader->classMap = ComposerStaticInit5cfbd5b18cb0ebf9bd6deb982d4298ed::$classMap;
 
         }, null, ClassLoader::class);
     }
