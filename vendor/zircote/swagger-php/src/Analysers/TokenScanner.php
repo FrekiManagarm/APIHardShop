@@ -134,7 +134,7 @@ class TokenScanner
                     if (!is_array($token) || T_IMPLEMENTS !== $token[0]) {
                         break;
                     }
-                // no break
+                    // no break
                 case T_IMPLEMENTS:
                     $fqns = $this->parseFQNStatement($tokens, $token);
                     if ($currentName) {
@@ -144,6 +144,10 @@ class TokenScanner
 
                 case T_FUNCTION:
                     $token = $this->nextToken($tokens);
+                    if ((!is_array($token) && '&' == $token)
+                        || (defined('T_AMPERSAND_NOT_FOLLOWED_BY_VAR_OR_VARARG') && T_AMPERSAND_NOT_FOLLOWED_BY_VAR_OR_VARARG == $token[0])) {
+                        $token = $this->nextToken($tokens);
+                    }
 
                     if (($unitLevel + 1) == count($stack) && $currentName) {
                         $units[$currentName]['methods'][] = $token[1];
@@ -181,16 +185,18 @@ class TokenScanner
                         $units[$currentName] = $initUnit($uses);
                     }
                     break;
-
             }
             $lastToken = $token;
         }
 
+        /* @phpstan-ignore-next-line */
         return $units;
     }
 
     /**
      * Get the next token that is not whitespace or comment.
+     *
+     * @return string|array
      */
     protected function nextToken(array &$tokens)
     {
@@ -351,6 +357,7 @@ class TokenScanner
             }
         }
 
+        /* @phpstan-ignore-next-line */
         return $properties;
     }
 }
