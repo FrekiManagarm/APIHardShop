@@ -385,8 +385,8 @@ class ComposerStaticInit5cfbd5b18cb0ebf9bd6deb982d4298ed
         ),
         'Psr\\Http\\Message\\' => 
         array (
-            0 => __DIR__ . '/..' . '/psr/http-message/src',
-            1 => __DIR__ . '/..' . '/psr/http-factory/src',
+            0 => __DIR__ . '/..' . '/psr/http-factory/src',
+            1 => __DIR__ . '/..' . '/psr/http-message/src',
         ),
         'Psr\\Http\\Client\\' => 
         array (
@@ -438,8 +438,8 @@ class ComposerStaticInit5cfbd5b18cb0ebf9bd6deb982d4298ed
         ),
         'League\\Uri\\' => 
         array (
-            0 => __DIR__ . '/..' . '/league/uri-interfaces/src',
-            1 => __DIR__ . '/..' . '/league/uri/src',
+            0 => __DIR__ . '/..' . '/league/uri/src',
+            1 => __DIR__ . '/..' . '/league/uri-interfaces/src',
         ),
         'League\\OAuth2\\Server\\' => 
         array (
@@ -525,8 +525,8 @@ class ComposerStaticInit5cfbd5b18cb0ebf9bd6deb982d4298ed
         ),
         'Fruitcake\\Cors\\' => 
         array (
-            0 => __DIR__ . '/..' . '/fruitcake/php-cors/src',
-            1 => __DIR__ . '/..' . '/fruitcake/laravel-cors/src',
+            0 => __DIR__ . '/..' . '/fruitcake/laravel-cors/src',
+            1 => __DIR__ . '/..' . '/fruitcake/php-cors/src',
         ),
         'Firebase\\JWT\\' => 
         array (
@@ -2321,6 +2321,7 @@ class ComposerStaticInit5cfbd5b18cb0ebf9bd6deb982d4298ed
         'Illuminate\\Foundation\\Http\\MaintenanceModeBypassCookie' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Foundation/Http/MaintenanceModeBypassCookie.php',
         'Illuminate\\Foundation\\Http\\Middleware\\CheckForMaintenanceMode' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Foundation/Http/Middleware/CheckForMaintenanceMode.php',
         'Illuminate\\Foundation\\Http\\Middleware\\ConvertEmptyStringsToNull' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Foundation/Http/Middleware/ConvertEmptyStringsToNull.php',
+        'Illuminate\\Foundation\\Http\\Middleware\\HandlePrecognitiveRequests' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Foundation/Http/Middleware/HandlePrecognitiveRequests.php',
         'Illuminate\\Foundation\\Http\\Middleware\\PreventRequestsDuringMaintenance' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Foundation/Http/Middleware/PreventRequestsDuringMaintenance.php',
         'Illuminate\\Foundation\\Http\\Middleware\\TransformsRequest' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Foundation/Http/Middleware/TransformsRequest.php',
         'Illuminate\\Foundation\\Http\\Middleware\\TrimStrings' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Foundation/Http/Middleware/TrimStrings.php',
@@ -2330,12 +2331,15 @@ class ComposerStaticInit5cfbd5b18cb0ebf9bd6deb982d4298ed
         'Illuminate\\Foundation\\MaintenanceModeManager' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Foundation/MaintenanceModeManager.php',
         'Illuminate\\Foundation\\Mix' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Foundation/Mix.php',
         'Illuminate\\Foundation\\PackageManifest' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Foundation/PackageManifest.php',
+        'Illuminate\\Foundation\\Precognition' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Foundation/Precognition.php',
         'Illuminate\\Foundation\\ProviderRepository' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Foundation/ProviderRepository.php',
         'Illuminate\\Foundation\\Providers\\ArtisanServiceProvider' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Foundation/Providers/ArtisanServiceProvider.php',
         'Illuminate\\Foundation\\Providers\\ComposerServiceProvider' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Foundation/Providers/ComposerServiceProvider.php',
         'Illuminate\\Foundation\\Providers\\ConsoleSupportServiceProvider' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Foundation/Providers/ConsoleSupportServiceProvider.php',
         'Illuminate\\Foundation\\Providers\\FormRequestServiceProvider' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Foundation/Providers/FormRequestServiceProvider.php',
         'Illuminate\\Foundation\\Providers\\FoundationServiceProvider' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Foundation/Providers/FoundationServiceProvider.php',
+        'Illuminate\\Foundation\\Routing\\PrecognitionCallableDispatcher' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Foundation/Routing/PrecognitionCallableDispatcher.php',
+        'Illuminate\\Foundation\\Routing\\PrecognitionControllerDispatcher' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Foundation/Routing/PrecognitionControllerDispatcher.php',
         'Illuminate\\Foundation\\Support\\Providers\\AuthServiceProvider' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Foundation/Support/Providers/AuthServiceProvider.php',
         'Illuminate\\Foundation\\Support\\Providers\\EventServiceProvider' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Foundation/Support/Providers/EventServiceProvider.php',
         'Illuminate\\Foundation\\Support\\Providers\\RouteServiceProvider' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Foundation/Support/Providers/RouteServiceProvider.php',
@@ -2382,6 +2386,7 @@ class ComposerStaticInit5cfbd5b18cb0ebf9bd6deb982d4298ed
         'Illuminate\\Http\\Client\\RequestException' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Http/Client/RequestException.php',
         'Illuminate\\Http\\Client\\Response' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Http/Client/Response.php',
         'Illuminate\\Http\\Client\\ResponseSequence' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Http/Client/ResponseSequence.php',
+        'Illuminate\\Http\\Concerns\\CanBePrecognitive' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Http/Concerns/CanBePrecognitive.php',
         'Illuminate\\Http\\Concerns\\InteractsWithContentTypes' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Http/Concerns/InteractsWithContentTypes.php',
         'Illuminate\\Http\\Concerns\\InteractsWithFlashData' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Http/Concerns/InteractsWithFlashData.php',
         'Illuminate\\Http\\Concerns\\InteractsWithInput' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Http/Concerns/InteractsWithInput.php',
@@ -2562,9 +2567,11 @@ class ComposerStaticInit5cfbd5b18cb0ebf9bd6deb982d4298ed
         'Illuminate\\Redis\\RedisManager' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Redis/RedisManager.php',
         'Illuminate\\Redis\\RedisServiceProvider' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Redis/RedisServiceProvider.php',
         'Illuminate\\Routing\\AbstractRouteCollection' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Routing/AbstractRouteCollection.php',
+        'Illuminate\\Routing\\CallableDispatcher' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Routing/CallableDispatcher.php',
         'Illuminate\\Routing\\CompiledRouteCollection' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Routing/CompiledRouteCollection.php',
         'Illuminate\\Routing\\Console\\ControllerMakeCommand' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Routing/Console/ControllerMakeCommand.php',
         'Illuminate\\Routing\\Console\\MiddlewareMakeCommand' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Routing/Console/MiddlewareMakeCommand.php',
+        'Illuminate\\Routing\\Contracts\\CallableDispatcher' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Routing/Contracts/CallableDispatcher.php',
         'Illuminate\\Routing\\Contracts\\ControllerDispatcher' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Routing/Contracts/ControllerDispatcher.php',
         'Illuminate\\Routing\\Controller' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Routing/Controller.php',
         'Illuminate\\Routing\\ControllerDispatcher' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Routing/ControllerDispatcher.php',
