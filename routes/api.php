@@ -67,8 +67,8 @@ Route::get('/PSU/{id}', [PSUController::class, 'show']);
 Route::middleware('auth:api')->group(function () {
 
     // User
-    Route::get('get-user', [AuthController::class, 'userInfo']);
-    Route::post('logout', [AuthController::class, 'logout']);
+    Route::get('/get-user', [AuthController::class, 'userInfo']);
+    Route::post('/logout', [AuthController::class, 'logout']);
 
     // CPU
     Route::post('/CPU', [CPUController::class, 'store']);
