@@ -24,16 +24,18 @@ class ConfigUpdateRequest extends FormRequest
     public function rules()
     {
         return [
-            'user_id' => 'sometimes|integer',
-            'cpu_id' => 'sometimes|integer',
-            'ram_id' => 'sometimes|integer',
-            'motherboard_id' => 'sometimes|integer',
-            'psu_id' => 'sometimes|integer',
-            'gpu_id' => 'sometimes|integer',
-            'hdd_id' => 'sometimes|integer',
-            'ssd_id' => 'sometimes|integer',
-            'cooling_id' => 'sometimes|integer',
-            'case_id' => 'sometimes|integer' 
+            'user_id' => 'sometimes|integer|exists:App\Models\User,id',
+            'status' => 'sometimes|string',
+            'active_step' => 'sometimes|integer',
+            'cpu_id' => 'sometimes|integer|exists:App\Models\CPU,id',
+            'ram_id' => 'sometimes|integer|exists:App\Models\RAM,id',
+            'motherboard_id' => 'sometimes|integer|exists:App\Models\MotherBoard,id',
+            'psu_id' => 'sometimes|integer|exists:App\Models\PSU,id',
+            'gpu_id' => 'sometimes|integer|exists:App\Models\GPU,id',
+            'hdd_id' => 'sometimes|integer|exists:App\Models\HDD,id',
+            'ssd_id' => 'sometimes|integer|exists:App\Models\SSD,id',
+            'cooling_id' => 'sometimes|integer|exists:App\Models\Cooling,id',
+            'case_id' => 'sometimes|integer|exists:App\Models\Boitier,id' 
         ];
     }
 }

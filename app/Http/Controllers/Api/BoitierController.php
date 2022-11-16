@@ -28,7 +28,7 @@ class BoitierController extends Controller
     }
 
     public function update(Boitier $boitier, BoitierUpdateRequest $request) {
-        $case = Boitier::where('boitiers.id', $boitier->id);
+        $case = Boitier::where('id', $boitier->id);
 
         $case->update($request->validated());
 

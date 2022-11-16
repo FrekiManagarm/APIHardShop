@@ -15,17 +15,20 @@ return new class extends Migration
     {
         Schema::create('config', function (Blueprint $table) {
             $table->unsignedBigInteger('id')->autoIncrement();
-            $table->unsignedBigInteger('user_id');
-            $table->unsignedBigInteger('cpu_id');
-            $table->unsignedBigInteger('ram_id');
-            $table->unsignedBigInteger('motherboard_id');
-            $table->unsignedBigInteger('psu_id');
-            $table->unsignedBigInteger('gpu_id');
-            $table->unsignedBigInteger("hdd_id");
-            $table->unsignedBigInteger('ssd_id');
-            $table->unsignedBigInteger('cooling_id');
-            $table->unsignedBigInteger('case_id');
+            $table->string('status');
+            $table->integer('active_step')->nullable()->default(NULL);
+            $table->unsignedBigInteger('user_id')->nullable()->default(NULL);
+            $table->unsignedBigInteger('cpu_id')->nullable()->default(NULL);
+            $table->unsignedBigInteger('ram_id')->nullable()->default(NULL);
+            $table->unsignedBigInteger('motherboard_id')->nullable()->default(NULL);
+            $table->unsignedBigInteger('psu_id')->nullable()->default(NULL);
+            $table->unsignedBigInteger('gpu_id')->nullable()->default(NULL);
+            $table->unsignedBigInteger("hdd_id")->nullable()->default(NULL);
+            $table->unsignedBigInteger('ssd_id')->nullable()->default(NULL);
+            $table->unsignedBigInteger('cooling_id')->nullable()->default(NULL);
+            $table->unsignedBigInteger('case_id')->nullable()->default(NULL);
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

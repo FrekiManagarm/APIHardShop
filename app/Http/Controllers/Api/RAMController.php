@@ -16,7 +16,7 @@ class RAMController extends Controller
     }
 
     public function show($id) {
-        $ram = RAM::where('RAMs.id', $id)->get();
+        $ram = RAM::where('id', $id)->get();
 
         return (new RAMResource($ram))->response()->setStatusCode(200);
     }
@@ -28,19 +28,19 @@ class RAMController extends Controller
     }
 
     public function interface($interface) {
-        $ram = RAM::where('RAMs.interface', $interface)->get();
+        $ram = RAM::where('interface', $interface)->get();
 
         return RAMResource::collection($ram)->response()->setStatusCode(200);
     }
 
     public function capacity($capacity) {
-        $ram = RAM::where('RAMs.capcité', $capacity)->get();
+        $ram = RAM::where('capcité', $capacity)->get();
 
         return RAMResource::collection($ram)->response()->setStatusCode(200);
     }
 
     public function update(RAM $ram, RAMUpdateRequest $request) {
-        $mem = RAM::where('RAMs.id', $ram->id);
+        $mem = RAM::where('id', $ram->id);
 
         $mem->update($request->validated());
 

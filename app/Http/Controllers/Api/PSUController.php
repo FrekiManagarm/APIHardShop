@@ -16,19 +16,19 @@ class PSUController extends Controller
     }
 
     public function show($id) {
-        $psu = PSU::where('PSUs.id', $id)->get();
+        $psu = PSU::where('id', $id)->get();
 
         return (new PSUResource($psu))->response()->setStatusCode(200);
     }
 
     public function byPower($power) {
-        $psu = PSU::where('PSUs.puissance', $power)->get();
+        $psu = PSU::where('puissance', $power)->get();
 
         return PSUResource::collection($psu)->response()->setStatusCode(200);
     }
 
     public function byFormat($format) {
-        $psu = PSU::where('PSUs.format', $format)->get();
+        $psu = PSU::where('format', $format)->get();
 
         return PSUResource::collection($psu)->response()->setStatusCode(200);
     }
@@ -40,7 +40,7 @@ class PSUController extends Controller
     }
 
     public function update(PSU $psu, PSUUpdateRequest $request) {
-        $alim = PSU::where('PSUs.id', $psu->id);
+        $alim = PSU::where('id', $psu->id);
 
         $alim->update($request->validated());
 
