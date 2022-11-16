@@ -72,7 +72,8 @@ Route::get('/Config/{id}', [ConfigController::class, "show"]);
 Route::middleware('auth:api')->group(function () {
 
     // User
-    Route::get('get-user', [AuthController::class, 'userInfo']);
+    Route::get('/get-user', [AuthController::class, 'userInfo']);
+    Route::post('/logout', [AuthController::class, 'logout']);
 
     // CPU
     Route::post('/CPU', [CPUController::class, 'store']);
