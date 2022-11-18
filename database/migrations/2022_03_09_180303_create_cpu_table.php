@@ -29,7 +29,7 @@ return new class extends Migration
             $table->boolean('overclocking');
             $table->string('socket');
             $table->string('type');
-            $table->string('link ')->nullable()->default(NULL);
+            $table->string('link')->nullable()->default(NULL);
             $table->timestamps();
             $table->softDeletes();
         });
