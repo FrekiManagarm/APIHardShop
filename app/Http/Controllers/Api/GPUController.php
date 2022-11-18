@@ -16,7 +16,7 @@ class GPUController extends Controller
     }
 
     public function show($id) {
-        $gpu = GPU::where('GPUs.id', $id)->get();
+        $gpu = GPU::where('id', $id)->get();
 
         return (new GPUResource($gpu))->response()->setStatusCode(200);
     }
@@ -28,7 +28,7 @@ class GPUController extends Controller
     }
 
     public function update(GPU $gpu, GPUUpdateRequest $request) {
-        $cg = GPU::where('GPUs.id', $gpu->id);
+        $cg = GPU::where('id', $gpu->id);
 
         $cg->update($request->validated());
 

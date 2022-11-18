@@ -24,16 +24,18 @@ class ConfigCreateRequest extends FormRequest
     public function rules()
     {
         return [
-            'user_id' => 'required|integer',
-            'cpu_id' => 'required|integer',
-            'ram_id' => 'required|integer',
-            'motherboard_id' => 'required|integer',
-            'psu_id' => 'required|integer',
-            'gpu_id' => 'required|integer',
-            'hdd_id' => 'required|integer',
-            'ssd_id' => 'required|integer',
-            'cooling_id' => 'required|integer',
-            'case_id' => 'required|integer' 
+            'user_id' => 'required|integer|exists:App\Models\User,id',
+            'status' => 'required|string',
+            'active_step' => 'sometimes|integer',
+            'cpu_id' => 'sometimes|integer|exists:App\Models\CPU,id',
+            'ram_id' => 'sometimes|integer|exists:App\Models\RAM,id',
+            'motherboard_id' => 'sometimes|integer|exists:App\Models\MotherBoard,id',
+            'psu_id' => 'sometimes|integer|exists:App\Models\PSU,id',
+            'gpu_id' => 'sometimes|integer|exists:App\Models\GPU,id',
+            'hdd_id' => 'sometimes|integer|exists:App\Models\HDD,id',
+            'ssd_id' => 'sometimes|integer|exists:App\Models\SSD,id',
+            'cooling_id' => 'sometimes|integer|exists:App\Models\Cooling,id',
+            'case_id' => 'sometimes|integer|exists:App\Models\Boitier,id' 
         ];
     }
 }

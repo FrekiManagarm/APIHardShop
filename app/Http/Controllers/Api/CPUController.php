@@ -16,13 +16,13 @@ class CPUController extends Controller
     }
 
     public function byType($proco) {
-        $cpu = CPU::where('CPUs.type', $proco)->get();
+        $cpu = CPU::where('type', $proco)->get();
 
         return CPUResource::collection($cpu)->response()->setStatusCode(200);
     }
 
     public function show($id) {
-        $cpu = CPU::where('CPUs.id', $id)->get();
+        $cpu = CPU::where('id', $id)->get();
 
         return (new CPUResource($cpu))->response()->setStatusCode(200);
     }
@@ -34,7 +34,7 @@ class CPUController extends Controller
     }
 
     public function update(CPU $cpu, CPUUpdateRequest $request) {
-        $proc = CPU::where('CPUs.id', $cpu->id);
+        $proc = CPU::where('id', $cpu->id);
 
         $proc->update($request->validated());
 

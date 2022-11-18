@@ -16,25 +16,25 @@ class CoolingController extends Controller
     }
 
     public function show($id) {
-        $cooling = Cooling::where('Coolings.id', $id)->get();
+        $cooling = Cooling::where('id', $id)->get();
 
         return (new CoolingResource($cooling))->response()->setStatusCode(200);
     }
 
     public function byFormat($format) {
-        $cooling = Cooling::where('Coolings.format', $format)->get();
+        $cooling = Cooling::where('format', $format)->get();
 
         return CoolingResource::collection($cooling)->response()->setStatusCode(200);
     }
 
     public function bySocket($socket) {
-        $cooling = Cooling::where('Coolings.socket', $socket)->get();
+        $cooling = Cooling::where('socket', $socket)->get();
 
         return CoolingResource::collection($cooling)->response()->setStatusCode(200);
     }
 
     public function byType($type) {
-        $cool = Cooling::where('Coolings.type', $type)->get();
+        $cool = Cooling::where('type', $type)->get();
 
         return CoolingResource::collection($cool)->response()->setStatusCode(200);
     }
@@ -46,7 +46,7 @@ class CoolingController extends Controller
     }
 
     public function update(Cooling $cooling, CoolingUpdateRequest $request) {
-        $cool = Cooling::where('Coolings.id', $cooling->id);
+        $cool = Cooling::where('id', $cooling->id);
 
         $cool->update($request->validated());
 

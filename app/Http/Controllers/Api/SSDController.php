@@ -16,19 +16,19 @@ class SSDController extends Controller
     }
 
     public function show($id) {
-        $ssd = SSD::where('SSDs.id', $id)->get();
+        $ssd = SSD::where('id', $id)->get();
 
         return (new SSDResource($ssd))->response()->setStatusCode(200);
     }
 
     public function byMarque($marque) {
-        $ssd = SSD::where('SSDs.marque', $marque)->get();
+        $ssd = SSD::where('marque', $marque)->get();
 
         return SSDResource::collection($ssd)->response()->setStatusCode(200);
     }
 
     public function byCapacity($capacity) {
-        $ssd = SSD::where('SSDs.capacité', $capacity)->get();
+        $ssd = SSD::where('capacité', $capacity)->get();
 
         return SSDResource::collection($ssd)->response()->setStatusCode(200);
     }
@@ -40,7 +40,7 @@ class SSDController extends Controller
     }
 
     public function update(SSD $ssd, SSDUpdateRequest $request) {
-        $pcie = SSD::where('SSDs.id', $ssd->id);
+        $pcie = SSD::where('id', $ssd->id);
 
         $pcie->update($request->validated());
 

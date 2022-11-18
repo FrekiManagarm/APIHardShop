@@ -16,6 +16,8 @@ class ConfigResource extends JsonResource
     {
         return [
             'id' => $this->id,
+            'status' => $this->status,
+            'active_step' => $this->active_step,
             'user' => new UserResource($this->whenLoaded('user')),
             'cpu' => new CPUResource($this->whenLoaded('cpu')),
             'cooling' => new CoolingResource($this->whenLoaded('cooling')),

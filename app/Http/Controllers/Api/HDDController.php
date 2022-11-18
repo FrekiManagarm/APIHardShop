@@ -16,13 +16,13 @@ class HDDController extends Controller
     }
 
     public function show($id) {
-        $hdd = HDD::where('HDDs.id', $id)->get();
+        $hdd = HDD::where('id', $id)->get();
 
         return (new HDDResource($hdd))->response()->setStatusCode(200);
     }
 
     public function capacity($capacity) {
-        $hdd = HDD::where('HDDs.capacité', $capacity)->get();
+        $hdd = HDD::where('capacité', $capacity)->get();
 
         return HDDResource::collection($hdd)->response()->setStatusCode(200);
     }
@@ -34,7 +34,7 @@ class HDDController extends Controller
     }
 
     public function update(HDD $hdd, HDDUpdateRequest $request) {
-        $disque = HDD::where('HDDs.id', $hdd->id);
+        $disque = HDD::where('id', $hdd->id);
 
         $disque->update($request->validated());
 

@@ -29,6 +29,7 @@ return new class extends Migration
             $table->unsignedBigInteger('cooling_id')->nullable()->default(NULL);
             $table->unsignedBigInteger('case_id')->nullable()->default(NULL);
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Api\AuthController;
 use App\Http\Controllers\Api\BoitierController;
+use App\Http\Controllers\Api\ConfigController;
 use App\Http\Controllers\Api\CoolingController;
 use App\Http\Controllers\Api\CPUController;
 use App\Http\Controllers\Api\GPUController;
@@ -64,6 +65,10 @@ Route::get('/Boitier/{id}', [BoitierController::class, 'show']);
 Route::get('/PSUs', [PSUController::class, 'index']);
 Route::get('/PSU/{id}', [PSUController::class, 'show']);
 
+// Configuration
+Route::get('/Configs', [ConfigController::class, "index"]);
+Route::get('/Config/{id}', [ConfigController::class, "show"]);
+
 Route::middleware('auth:api')->group(function () {
 
     // User
@@ -114,6 +119,12 @@ Route::middleware('auth:api')->group(function () {
     Route::post('/Boitier', [BoitierController::class, 'store']);
     Route::patch('/Boitier/{id}', [BoitierController::class, 'update']);
     Route::delete('/Boitier/{id}', [BoitierController::class, 'delete']);
+
+    // Configuration
+    
+    Route::post('/Config', [ConfigController::class, "createDraft"]);
+    Route::patch('/Config/{id}', [ConfigController::class, "pushToDraft"]);
+    Route::delete('/Config/{id}', [ConfigController::class, "delete"]);
 
     // Configurator
     Route::get('/HDD/{capacity}', [HDDController::class, 'byCapacity']);

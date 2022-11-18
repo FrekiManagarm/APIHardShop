@@ -8,6 +8,7 @@ use App\Http\Requests\ConfigUpdateRequest;
 use App\Http\Resources\ConfigResource;
 use App\Models\Config;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class ConfigController extends Controller
 {
@@ -31,6 +32,30 @@ class ConfigController extends Controller
         ])->get();
 
         return (new ConfigResource($config))->response()->setStatusCode(200);
+    }
+
+    public function createDraft() {
+        $user = Auth::user();
+
+        $conf = Config::create([
+            'user_id' => $user->id,
+            'status' => 'draft'
+        ]);
+
+        return (new ConfigResource($conf))->response()->setStatusCode(201);
+    }
+
+    public function pushToDraft($config, ConfigUpdateRequest $request) {
+
+        $conf = Config::where('id', $config)->get();
+
+        $conf->update($request->validated());
+
+        return (new ConfigResource($conf))->response()->setStatusCode(201);
+    }
+
+    public function draftToConfig(Config $config) {
+        $user = Auth::user();
     }
 
     public function store(ConfigCreateRequest $request) {

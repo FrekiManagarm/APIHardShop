@@ -12,16 +12,18 @@ class Config extends Model
     protected $table = "config";
 
     protected $fillable = [
-        "user_id",
-        "cpu_id",
-        "motherboard_id",
-        "cooling_id",
-        "ssd_id",
-        "gpu_id",
-        "psu_id",
-        "ram_id",
-        "hdd_id",
-        "case_id"
+        'user_id',
+        'status',
+        'active_step',
+        'motherboard_id',
+        'cpu_id',
+        'cooling_id',
+        'ssd_id',
+        'gpu_id',
+        'psu_id',
+        'ram_id',
+        'hdd_id',
+        'case_id'
     ];
 
     public function user() {

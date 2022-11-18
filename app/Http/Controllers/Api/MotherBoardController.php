@@ -16,19 +16,19 @@ class MotherBoardController extends Controller
     }
 
     public function show($id) {
-        $mb = MotherBoard::where('MotherBoards.id', $id)->get();
+        $mb = MotherBoard::where('id', $id)->get();
 
         return (new MotherBoardResource($mb))->response()->setStatusCode(200);
     }
 
     public function procoCompatible($proco_compatible) {
-        $mb = MotherBoard::where('MotherBoards.proco_compatible', $proco_compatible)->get();
+        $mb = MotherBoard::where('proco_compatible', $proco_compatible)->get();
 
         return MotherBoardResource::collection($mb)->response()->setStatusCode(200);
     }
 
     public function byConstructor($constructor) {
-        $mb = MotherBoard::where('MotherBoards.constructeur', $constructor)->get();
+        $mb = MotherBoard::where('constructeur', $constructor)->get();
 
         return MotherBoardResource::collection($mb)->response()->setStatusCode(200);
     }
@@ -40,7 +40,7 @@ class MotherBoardController extends Controller
     }
 
     public function update(MotherBoard $mb, MotherBoardUpdateRequest $request) {
-        $mother = MotherBoard::where('MotherBoards.id', $mb->id);
+        $mother = MotherBoard::where('id', $mb->id);
 
         $mother->update($request->validated());
 
