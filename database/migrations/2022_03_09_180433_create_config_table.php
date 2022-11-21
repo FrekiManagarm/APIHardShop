@@ -15,9 +15,10 @@ return new class extends Migration
     {
         Schema::create('config', function (Blueprint $table) {
             $table->unsignedBigInteger('id')->autoIncrement();
-            $table->string('status');
-            $table->integer('active_step')->nullable()->default(NULL);
-            $table->unsignedBigInteger('user_id')->nullable()->default(NULL);
+            $table->unsignedBigInteger('user_id');
+            $table->integer('use')->nullable()->default(NULL);
+            $table->integer('current_step')->nullable()->default(NULL);
+            $table->integer('status')->nullable()->default(NULL);
             $table->unsignedBigInteger('cpu_id')->nullable()->default(NULL);
             $table->unsignedBigInteger('ram_id')->nullable()->default(NULL);
             $table->unsignedBigInteger('motherboard_id')->nullable()->default(NULL);
