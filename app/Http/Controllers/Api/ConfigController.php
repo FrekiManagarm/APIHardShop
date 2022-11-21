@@ -66,9 +66,9 @@ class ConfigController extends Controller
         return (new ConfigResource($conf))->response()->setStatusCode(201);
     }
 
-    public function pushToDraft($config, ConfigUpdateRequest $request) {
+    public function pushToDraft($id, ConfigUpdateRequest $request) {
 
-        $conf = Config::where('id', $config)->get();
+        $conf = Config::where('id', $id)->get();
 
         $conf->update($request->validated());
 
