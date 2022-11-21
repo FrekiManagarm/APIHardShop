@@ -56,7 +56,9 @@ class ConfigController extends Controller
     public function createDraft(ConfigCreateRequest $request) {
         $user = Auth::user();
 
-        $conf = Config::create($request->validated());
+        $conf = Config::create($request->validated() + [
+            "user_id" => $user->id
+        ]);
 
         return (new ConfigResource($conf))->response()->setStatusCode(201);
     }
