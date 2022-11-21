@@ -26,7 +26,7 @@ class ConfigUpdateRequest extends FormRequest
         return [
             'user_id' => 'sometimes|integer|exists:App\Models\User,id',
             'status' => 'sometimes|string',
-            'active_step' => 'sometimes|integer',
+            'current_step' => 'sometimes|integer',
             'cpu_id' => 'sometimes|integer|exists:App\Models\CPU,id',
             'ram_id' => 'sometimes|integer|exists:App\Models\RAM,id',
             'motherboard_id' => 'sometimes|integer|exists:App\Models\MotherBoard,id',

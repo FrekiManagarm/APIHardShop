@@ -53,15 +53,10 @@ class ConfigController extends Controller
         return ConfigResource::collection($configs)->response()->setStatusCode(200);
     }
 
-    public function createDraft(Request $request) {
+    public function createDraft(ConfigCreateRequest $request) {
         $user = Auth::user();
 
-        $conf = Config::create([
-            'user_id' => $user->id,
-            'status' => $request->status,
-            'use' => $request->use,
-            'active_step' => $request->active_step
-        ]);
+        $conf = Config::create($request->validated());
 
         return (new ConfigResource($conf))->response()->setStatusCode(201);
     }
@@ -75,14 +70,11 @@ class ConfigController extends Controller
         return (new ConfigResource($conf))->response()->setStatusCode(201);
     }
 
-    public function draftToConfig($id, Request $request) {
-        // $user = Auth::user();
+    public function draftToConfig($id, ConfigUpdateRequest $request) {
 
         $config = Config::where('id', $id)->get();
 
-        $config->update([
-            'status' => $request->status
-        ]);
+        $config->update($request->validated());
 
         return (new ConfigResource($config))->response()->setStatusCode(203);
     }
