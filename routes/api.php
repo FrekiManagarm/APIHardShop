@@ -121,7 +121,7 @@ Route::middleware('auth:api')->group(function () {
     Route::delete('/Boitier/{id}', [BoitierController::class, 'delete']);
 
     // Configuration
-    
+    Route::get('/myConfigs', [ConfigController::class, "myConfigs"]);
     Route::post('/Config', [ConfigController::class, "createDraft"]);
     Route::patch('/Config/{id}', [ConfigController::class, "pushToDraft"]);
     Route::delete('/Config/{id}', [ConfigController::class, "delete"]);

@@ -34,6 +34,23 @@ class ConfigController extends Controller
         return (new ConfigResource($config))->response()->setStatusCode(200);
     }
 
+    public function myConfigs() {
+        $user = Auth::user();
+        $configs = Config::with([
+            "cpu",
+            "motherboard",
+            "cooling",
+            "ssd",
+            "gpu",
+            "psu",
+            "ram",
+            "hdd",
+            "boitier"
+        ])->where("user_id", $user->id)->get();
+
+        return ConfigResource::collection($configs)->response()->setStatusCode(200);
+    }
+
     public function createDraft() {
         $user = Auth::user();
 
