@@ -66,8 +66,8 @@ Route::get('/PSUs', [PSUController::class, 'index']);
 Route::get('/PSU/{id}', [PSUController::class, 'show']);
 
 // Configuration
-Route::get('/Configs', [ConfigController::class, "index"]);
-Route::get('/Config/{id}', [ConfigController::class, "show"]);
+Route::get('/configs', [ConfigController::class, "index"]);
+Route::get('/config/{id}', [ConfigController::class, "show"]);
 
 Route::middleware('auth:api')->group(function () {
 
@@ -121,10 +121,10 @@ Route::middleware('auth:api')->group(function () {
     Route::delete('/Boitier/{id}', [BoitierController::class, 'delete']);
 
     // Configuration
-    Route::get('/myConfigs', [ConfigController::class, "myConfigs"]);
-    Route::post('/Config', [ConfigController::class, "createDraft"]);
-    Route::patch('/Config/{id}', [ConfigController::class, "pushToDraft"]);
-    Route::delete('/Config/{id}', [ConfigController::class, "delete"]);
+    Route::get('/my-configs', [ConfigController::class, "myConfigs"]);
+    Route::post('/config', [ConfigController::class, "createDraft"]);
+    Route::patch('/config/{id}', [ConfigController::class, "pushToDraft"]);
+    Route::delete('/config/{id}', [ConfigController::class, "delete"]);
 
     // Configurator
     Route::get('/HDD/{capacity}', [HDDController::class, 'byCapacity']);

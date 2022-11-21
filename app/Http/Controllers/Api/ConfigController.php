@@ -29,7 +29,9 @@ class ConfigController extends Controller
             'psu',
             'ram',
             'boitier'
-        ])->get();
+        ])
+        ->where("status", "done")
+        ->get();
 
         return (new ConfigResource($config))->response()->setStatusCode(200);
     }
@@ -51,12 +53,14 @@ class ConfigController extends Controller
         return ConfigResource::collection($configs)->response()->setStatusCode(200);
     }
 
-    public function createDraft() {
+    public function createDraft(Request $request) {
         $user = Auth::user();
 
         $conf = Config::create([
             'user_id' => $user->id,
-            'status' => 'draft'
+            'status' => $request->status,
+            'use' => $request->use,
+            'active_step' => $request->active_step
         ]);
 
         return (new ConfigResource($conf))->response()->setStatusCode(201);
@@ -71,8 +75,16 @@ class ConfigController extends Controller
         return (new ConfigResource($conf))->response()->setStatusCode(201);
     }
 
-    public function draftToConfig(Config $config) {
-        $user = Auth::user();
+    public function draftToConfig($id, Request $request) {
+        // $user = Auth::user();
+
+        $config = Config::where('id', $id)->get();
+
+        $config->update([
+            'status' => $request->status
+        ]);
+
+        return (new ConfigResource($config))->response()->setStatusCode(203);
     }
 
     public function store(ConfigCreateRequest $request) {
