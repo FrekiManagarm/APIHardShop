@@ -13,7 +13,7 @@ class Config extends Model
 
     protected $fillable = [
         'user_id',
-        'status',
+        'draft',
         'current_step',
         'motherboard_id',
         'cpu_id',

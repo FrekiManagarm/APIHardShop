@@ -30,7 +30,7 @@ class ConfigController extends Controller
             'ram',
             'boitier'
         ])
-        ->where("status", "done")
+        ->where("draft", false)
         ->get();
 
         return (new ConfigResource($config))->response()->setStatusCode(200);
@@ -60,7 +60,7 @@ class ConfigController extends Controller
             "user_id" => $user->id,
             "use" => $request->use,
             "current_step" => $request->current_step,
-            "status" => $request->status
+            "draft" => $request->draft
         ]);
 
         return (new ConfigResource($conf))->response()->setStatusCode(201);

@@ -25,7 +25,7 @@ class ConfigCreateRequest extends FormRequest
     {
         return [
             'user_id' => 'required|integer|exists:App\Models\User,id',
-            'status' => 'required|string',
+            'draft' => 'required|boolean',
             'current_step' => 'sometimes|integer',
             'cpu_id' => 'sometimes|integer|exists:App\Models\CPU,id',
             'ram_id' => 'sometimes|integer|exists:App\Models\RAM,id',

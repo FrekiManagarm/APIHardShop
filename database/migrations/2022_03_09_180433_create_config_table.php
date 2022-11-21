@@ -18,7 +18,7 @@ return new class extends Migration
             $table->unsignedBigInteger('user_id');
             $table->integer('use')->nullable()->default(NULL);
             $table->integer('current_step')->nullable()->default(NULL);
-            $table->integer('status')->nullable()->default(NULL);
+            $table->boolean('draft')->nullable()->default(NULL);
             $table->unsignedBigInteger('cpu_id')->nullable()->default(NULL);
             $table->unsignedBigInteger('ram_id')->nullable()->default(NULL);
             $table->unsignedBigInteger('motherboard_id')->nullable()->default(NULL);
