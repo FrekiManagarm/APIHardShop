@@ -68,7 +68,7 @@ class ConfigController extends Controller
 
     public function pushToDraft($id, ConfigUpdateRequest $request) {
 
-        $conf = Config::where('id', $id)->get();
+        $conf = Config::findOrFail($id)->get();
 
         $conf->update($request->validated());
 
