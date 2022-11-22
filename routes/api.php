@@ -124,6 +124,7 @@ Route::middleware('auth:api')->group(function () {
     Route::get('/my-configs', [ConfigController::class, "myConfigs"]);
     Route::post('/config', [ConfigController::class, "createDraft"]);
     Route::patch('/config/{id}', [ConfigController::class, "pushToDraft"]);
+    Route::patch('/config/{id}/draft-to-config', [ConfigController::class, 'draftToConfig']);
     Route::delete('/config/{id}', [ConfigController::class, "delete"]);
 
     // Configurator

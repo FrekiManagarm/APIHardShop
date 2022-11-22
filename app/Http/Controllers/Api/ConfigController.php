@@ -31,7 +31,7 @@ class ConfigController extends Controller
             'boitier'
         ])
         ->where("draft", false)
-        ->get();
+        ->first();
 
         return (new ConfigResource($config))->response()->setStatusCode(200);
     }
@@ -48,7 +48,9 @@ class ConfigController extends Controller
             "ram",
             "hdd",
             "boitier"
-        ])->where("user_id", $user->id)->get();
+        ])
+        ->where("user_id", $user->id)
+        ->get();
 
         return ConfigResource::collection($configs)->response()->setStatusCode(200);
     }
