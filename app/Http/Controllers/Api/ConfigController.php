@@ -17,7 +17,7 @@ class ConfigController extends Controller
     }
 
     public function show($id) {
-        $config = Config::where('config.id', $id)
+        $config = Config::where('id', $id)
         ->with([
             'user',
             'cpu',
@@ -30,8 +30,8 @@ class ConfigController extends Controller
             'ram',
             'boitier'
         ])
-        ->where("draft", false)
         ->first();
+	dd($config);
 
         return (new ConfigResource($config))->response()->setStatusCode(200);
     }
