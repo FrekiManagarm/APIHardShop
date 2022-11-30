@@ -17,7 +17,7 @@ class ConfigController extends Controller
     }
 
     public function show($id) {
-        $config = Config::where('config.id', $id)
+        $config = Config::where('id', $id)
         ->with([
             'user',
             'cpu',
