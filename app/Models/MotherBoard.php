@@ -24,6 +24,6 @@ class MotherBoard extends Model
     ];
 
     public function configs() {
-        return $this->belongsToMany(Config::class);
+        return $this->belongsTo(Config::class);
     }
 }

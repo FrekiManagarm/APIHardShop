@@ -31,38 +31,38 @@ class Config extends Model
     }
 
     public function cpu() {
-        return $this->hasOne(CPU::class, "id");
+        return $this->hasMany(CPU::class);
     }
 
     public function motherboard() {
-        return $this->hasOne(MotherBoard::class, "id");
+        return $this->hasMany(MotherBoard::class);
     }
 
     public function cooling() {
-        return $this->hasOne(Cooling::class, "id");
+        return $this->hasMany(Cooling::class);
     }
 
     public function ssd() {
-        return $this->hasOne(SSD::class, "id");
+        return $this->hasMany(SSD::class);
     }
 
     public function gpu() {
-        return $this->hasOne(GPU::class, "id");
+        return $this->hasMany(GPU::class);
     }
 
     public function psu() {
-        return $this->hasOne(PSU::class, "id");
+        return $this->hasMany(PSU::class);
     }
 
     public function ram() {
-        return $this->hasOne(RAM::class, "id");
+        return $this->hasMany(RAM::class);
     }
 
     public function hdd() {
-        return $this->hasOne(HDD::class, "id");
+        return $this->hasMany(HDD::class);
     }
 
     public function boitier() {
-        return $this->hasOne(Boitier::class, "id");
+        return $this->hasMany(Boitier::class);
     }
 }
