@@ -23,6 +23,7 @@ return new class extends Migration
             $table->foreign('hdd_id')->references('id')->on('HDDs');
             $table->foreign('ssd_id')->references('id')->on('SSDs');
             $table->foreign('cooling_id')->references('id')->on('Coolings');
+            $table->foreign('case_id')->references('id')->on('boitiers');
         });
     }
 
@@ -43,6 +44,7 @@ return new class extends Migration
             $table->dropForeign('config_hdd_id_foreign');
             $table->dropForeign('config_ssd_id_foreign');
             $table->dropForeign('config_cooling_id_foreign');
+            $table->dropForeign('config_case_id_foreign');
         });
     }
 };
