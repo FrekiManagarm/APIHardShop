@@ -24,6 +24,6 @@ class PSU extends Model
     ];
 
     public function configs() {
-        return $this->belongsTo(Config::class);
+        return $this->hasMany(Config::class);
     }
 }

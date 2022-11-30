@@ -25,6 +25,6 @@ class Boitier extends Model
     ];
 
     public function configs() {
-        $this->belongsTo(Config::class);
+        $this->hasMany(Config::class);
     }
 }
