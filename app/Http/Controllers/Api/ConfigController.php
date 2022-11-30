@@ -30,7 +30,6 @@ class ConfigController extends Controller
             'ram',
             'boitier'
         ])
-        ->where("draft", false)
         ->first();
 
         return (new ConfigResource($config))->response()->setStatusCode(200);
