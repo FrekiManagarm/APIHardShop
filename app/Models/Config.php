@@ -27,42 +27,42 @@ class Config extends Model
     ];
 
     public function user() {
-        return $this->belongsTo(User::class, 'id', 'user_id');
+        return $this->belongsTo(User::class);
     }
 
     public function cpu() {
-        return $this->hasOne(CPU::class, 'id', 'cpu_id');
+        return $this->hasOne(CPU::class);
     }
 
     public function motherboard() {
-        return $this->hasOne(MotherBoard::class, 'id', 'motherboard_id');
+        return $this->hasOne(MotherBoard::class);
     }
 
     public function cooling() {
-        return $this->hasOne(Cooling::class, 'id', 'cooling_id');
+        return $this->hasOne(Cooling::class);
     }
 
     public function ssd() {
-        return $this->hasOne(SSD::class, 'id', 'ssd_id');
+        return $this->hasOne(SSD::class);
     }
 
     public function gpu() {
-        return $this->hasOne(GPU::class, 'id', 'gpu_id');
+        return $this->hasOne(GPU::class);
     }
 
     public function psu() {
-        return $this->hasOne(PSU::class, 'id', 'psu_id');
+        return $this->hasOne(PSU::class);
     }
 
     public function ram() {
-        return $this->hasOne(RAM::class, 'id', 'ram_id');
+        return $this->hasOne(RAM::class);
     }
 
     public function hdd() {
-        return $this->hasOne(HDD::class, 'id', 'hdd_id');
+        return $this->hasOne(HDD::class);
     }
 
     public function boitier() {
-        return $this->hasOne(Boitier::class, 'id', 'case_id');
+        return $this->hasOne(Boitier::class);
     }
 }

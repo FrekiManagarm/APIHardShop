@@ -31,7 +31,6 @@ class ConfigController extends Controller
             'boitier'
         ])
         ->first();
-	dd($config);
 
         return (new ConfigResource($config))->response()->setStatusCode(200);
     }
