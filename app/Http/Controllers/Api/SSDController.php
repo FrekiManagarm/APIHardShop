@@ -16,7 +16,7 @@ class SSDController extends Controller
     }
 
     public function show($id) {
-        $ssd = SSD::where('id', $id)->get();
+        $ssd = SSD::where('id', $id)->first();
 
         return (new SSDResource($ssd))->response()->setStatusCode(200);
     }

@@ -16,7 +16,7 @@ class MotherBoardController extends Controller
     }
 
     public function show($id) {
-        $mb = MotherBoard::where('id', $id)->get();
+        $mb = MotherBoard::where('id', $id)->first();
 
         return (new MotherBoardResource($mb))->response()->setStatusCode(200);
     }

@@ -16,7 +16,7 @@ class CoolingController extends Controller
     }
 
     public function show($id) {
-        $cooling = Cooling::where('id', $id)->get();
+        $cooling = Cooling::where('id', $id)->first();
 
         return (new CoolingResource($cooling))->response()->setStatusCode(200);
     }

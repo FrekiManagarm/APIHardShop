@@ -16,7 +16,7 @@ class BoitierController extends Controller
     }
 
     public function show($id) {
-        $case = Boitier::where('id', $id)->get();
+        $case = Boitier::where('id', $id)->first();
 
         return (new BoitierResource($case))->response()->setStatusCode(200);
     }

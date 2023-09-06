@@ -22,7 +22,7 @@ class CPUController extends Controller
     }
 
     public function show($id) {
-        $cpu = CPU::where('id', $id)->get();
+        $cpu = CPU::where('id', $id)->first();
 
         return (new CPUResource($cpu))->response()->setStatusCode(200);
     }

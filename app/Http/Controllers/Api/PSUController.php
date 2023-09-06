@@ -16,7 +16,7 @@ class PSUController extends Controller
     }
 
     public function show($id) {
-        $psu = PSU::where('id', $id)->get();
+        $psu = PSU::where('id', $id)->first();
 
         return (new PSUResource($psu))->response()->setStatusCode(200);
     }

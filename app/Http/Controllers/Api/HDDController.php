@@ -16,7 +16,7 @@ class HDDController extends Controller
     }
 
     public function show($id) {
-        $hdd = HDD::where('id', $id)->get();
+        $hdd = HDD::where('id', $id)->first();
 
         return (new HDDResource($hdd))->response()->setStatusCode(200);
     }

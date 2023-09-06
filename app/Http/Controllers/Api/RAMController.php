@@ -16,7 +16,7 @@ class RAMController extends Controller
     }
 
     public function show($id) {
-        $ram = RAM::where('id', $id)->get();
+        $ram = RAM::where('id', $id)->first();
 
         return (new RAMResource($ram))->response()->setStatusCode(200);
     }
